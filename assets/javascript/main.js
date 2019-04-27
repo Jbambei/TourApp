@@ -13,7 +13,7 @@ var uid = null;
       }else{
         //redirect to login page
         uid = null;
-        window.location.replace("login.html");
+        window.location.replace("././login.html");
     }
 });
 
