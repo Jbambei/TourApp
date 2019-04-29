@@ -25,10 +25,15 @@ var uid = null;
 
 
 
+$(document).ready(function(){
+  //Sidenav Activate
+  $('.sidenav').sidenav();
+  //Modal Activate
+  $('.modal').modal();
+  //Dropdown Activate
+  $('select').formSelect();
 
-
-
-
+});
 
 
 
