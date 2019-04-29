@@ -9,19 +9,273 @@
 
     <!--Firebase-->
     
-    <link rel=stylesheet href="" type="text/css/reset.css">
+    <link rel="stylesheet" href="" type="text/css/reset.css">
     <!-- Materialize -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">    
-    <link rel=stylesheet href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
 </head>
 
 <body>
-    <h1>Welcome to the main area</h1>
-    <button onclick="mainApp.logOut()">logOut</button>
+  <!-- start header -->
+  <header>
+    <!-- Materialize side nav -->
+  </header>
+    <main>
+            <div class="scheduleCardsPage">
+        
+                    <nav>
+                    <div class="nav-wrapper blue">
+                        <a href="#!" class="brand-logo right">Logo</a>
+                        <a href="#" data-target="slide-out" class="show sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="left hide-on-med-and-down">
+                                <li><a href="#profileCreate" class="modal-trigger sidenav-close">Create Profile</a></li>
+                                <li><a href="#!">Add Break</a></li>
+                                <li><div class="divider"></div></li>
+                                <li><a class="waves-effect" href="#!">New Schedule</a></li>
+                                <button onclick="mainApp.logOut()">logOut</button>
+                        </ul>
+                    </div>
+                    </nav>
+                            
+                    <ul id="slide-out" class="sidenav">
+                            <li>
+                              <div class="user-view">
+                              <div class="background">
+                                <img src="https://picsum.photos/300/200">
+                              </div>
+                              <a href="#user"><img class="circle" src="https://picsum.photos/100"></a>
+                              <a href="#name"><span class="white-text name">John Doe</span></a>
+                              <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                            </div></li>
+                            <li><a href="#profileCreate" class="modal-trigger sidenav-close"><i class="material-icons">cloud</i>Create Profile</a></li>
+                            <li><a href="#!">Add Break</a></li>
+                            <li><div class="divider"></div></li>
+                            <li><a class="waves-effect" href="#!">New Schedule</a></li>
+                            <button onclick="mainApp.logOut()">logOut</button>
+                          </ul>
+
+                  
+                
+                    <div class="center-align">
+                        <div class="input-field col s12" >
+                            <select>
+                                <option value="" disabled selected>Pick</option>
+                                <option value="1">Fantasy Land</option>
+                                <option value="2">Adventure Land</option>
+                                <option value="3">Frontier Land</option>
+                                <option value="4">Liberty Square</option>
+                                <option value="5">Tommorrow Land</option>
+                            </select>
+                            <label>Current Location</label>
+                        </div>
+                    </div>
+                
+                            
+                <div class="row">
+                        <p class="col s1">9:30</p>
+                        <div class="col s11 m6">
+                        <div class="card">
+                            <div class="card-image">
+                            <img src="assets/images/splashMountainSample.jpg">
+                            <span class="card-title">Minutes</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons right">cloud</i></a>
+                            </div>
+                            <div class="card-content">
+                            <div class="row"> 
+                                <a class="waves-effect waves-light btn-large col s2"><i class="material-icons">check</i></a>
+                                <p class="col s10">Splash Mountain</p>
+                                <p class="col s10">Ride Location</p> 
+                            </div>
+                            <div class="row">
+                                <a class="waves-effect waves-light btn-large col s2"><i class="material-icons">clear</i></a>
+                                <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala lalalalala lalala lalalal lalalalala lalalalala</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                
+                
+                
+                
+                <div class="row">
+                        <p class="col s1">9:30</p>
+                        <div class="col s11 m6">
+                        <div class="card">
+                            <div class="card-image">
+                            <img src="assets/images/splashMountainSample.jpg">
+                            <span class="card-title">Minutes</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons right">cloud</i></a>
+                            </div>
+                            <div class="card-content">
+                            <div class="row"> 
+                                <a class="waves-effect waves-light btn-large col s2"><i class="material-icons">check</i></a>
+                                <p class="col s10">Splash Mountain</p>
+                                <p class="col s10">Ride Location</p> 
+                            </div>
+                            <div class="row">
+                                <a class="waves-effect waves-light btn-large col s2"><i class="material-icons">clear</i></a>
+                                <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala lalalalala lalala lalalal lalalalala lalalalala</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+                
+                
+                
+                
+                
+                <div class="row">
+                        <p class="col s1">9:30</p>
+                        <div class="col s11 m6">
+                        <div class="card">
+                            <div class="card-image">
+                            <img src="assets/images/splashMountainSample.jpg">
+                            <span class="card-title">Minutes</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons right">cloud</i></a>
+                            </div>
+                            <div class="card-content">
+                            <div class="row"> 
+                                <a class="waves-effect waves-light btn-large col s2"><i class="material-icons">check</i></a>
+                                <p class="col s10">Splash Mountain</p>
+                                <p class="col s10">Ride Location</p>
+                            </div>
+                            <div class="row">
+                                <a class="waves-effect waves-light btn-large col s2"><i class="material-icons">clear</i></a>
+                                <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala lalalalala lalala lalalal lalalalala lalalalala</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+                
+                
+                </div>
+                
+    </main>
+    <!-- Modal Trigger -->
+<div class="scheduleButton center-align">
+        <a href="#profileCreate" class="waves-effect waves-light btn-large modal-trigger"><i class="material-icons right">cloud</i>Create Schedule</a>
+</div>
+    <!-- Modal Structure -->
+    <div id="profileCreate" class="modal center-align">
+      <div class="modal-content center-align">
+        <h4>Profile Creation</h4>
+        <p>Let's Create your profile!  First off, what kind of rides fit your party?  Your options are Thrilling (Space Mountain, Thunder Mountain), Easy (The little Mermaid, Dumbo), No Preference </p>
+        <div>
+            <a href="#profileRestrict" class="waves-effect waves-green btn modal-trigger modal-close">Thrilling</a>
+            <a href="#profileRestrict" class="waves-effect waves-green btn modal-trigger modal-close">Easy</a>
+            <a href="#profileRestrict" class="waves-effect waves-green btn modal-trigger modal-close">No Preference</a>
+        </div>
+    </div>
+
+      
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Back</a>
+      </div>
+    </div>
+  
+    <!-- Modal Structure -->
+    <div id="profileRestrict" class="modal center-align">
+      <div class="modal-content center-align">
+        <h4>Ride Restrictions</h4>
+        <p>Let's set some height requirements.  Choose from the options below on which height restrictions to exclude.</p>
+      </div>
+      <div>
+        <a href="#profileFastPass" class="modal-trigger modal-close waves-effect waves-green btn">None. Show All Rides.</a>
+        <div class="row">
+            <form class="col s12 center-align">
+            <div class="input-field center-align col s8 ">
+                    <select id="heightRestrict" class="col s8">
+                    <option value="" disabled selected>Select a Restriction</option>
+                    <option value="1">Show only rides below 48"</option>
+                    <option value="2">Show only rides below 44"</option>
+                    <option value="3">Show only rides below 40"</option>
+                    <option value="4">Show only rides below 38"</option>
+
+                    </select>
+                    <label>Height Restriction:</label>
+                </div>
+            </form>
+            <a href="#profileFastPass" class="waves-effect waves-green btn modal-close modal-trigger" type="submit">Submit</a>
+            </div>
+      </div>
+      
+      <div class="modal-footer">
+        <a href="#profileCreate" class="modal-close waves-effect waves-green btn-flat modal-trigger">Back</a>
+      </div>
+    </div>
 
 
 
+    
+
+            <!-- Modal Structure -->
+    <div id="profileFastPass" class="modal">
+        <div class="modal-content">
+        <h4 class="center-align">User FastPass</h4>
+        <p class="center-align">Let's schedule your FastPasses. Check the My Disney Experience App for FastPass times and to book.</p>
+        <div class="row">
+            <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                <input placeholder="Placeholder" id="firstFPRide" type="text" class="validate">
+                <label for="firstFPRide">Ride</label>
+                </div>
+                <div class="input-field col s6">
+                <input id="firstFPTime" type="text" class="validate">
+                <label for="firstFPTime">Time</label>
+                </div>
+            </div>
+            </form>
+        </div>
+            
+        <div class="row">
+            <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                <input placeholder="Placeholder" id="secondFPRide" type="text" class="validate">
+                <label for="secondFPRide">Ride</label>
+                </div>
+                <div class="input-field col s6">
+                <input id="secondFPTime" type="text" class="validate">
+                <label for="secondFPTime">Time</label>
+                </div>
+            </div>
+            </form>
+        </div>
+    
+        <div class="row">
+            <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                <input placeholder="Placeholder" id="thirdFPRide" type="text" class="validate">
+                <label for="thirdFPRide">Ride</label>
+                </div>
+                <div class="input-field col s6">
+                <input id="thirdFPTime" type="text" class="validate">
+                <label for="thirdFPTime">Time</label>
+                </div>
+            </div>
+            </form>
+        </div>
+    
+        <div class="fastPassInputButtons center-align">
+            <a class="waves-effect waves-light btn-large modal-close"><i class="material-icons right">cloud</i>Continue</a>
+            <br>
+            <br>
+            <a class="waves-effect waves-light btn-large modal-close"><i class="material-icons right">cloud</i>Skip this Step</a>    
+        </div>
+        </div>
+    
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat modal-close">Agree</a>
+        </div>
+    </div>
+          
 
 
 
