@@ -182,7 +182,7 @@
     <div id="profileRestrict" class="modal center-align">
       <div class="modal-content center-align">
         <h4>Ride Restrictions</h4>
-        <p>Let's set some height requirements.  Choose from the options below on which height restrictions to exclude.</p>
+        <p>Let's set some height or physical restrictions.  Choose from the options below on which height restrictions to exclude.</p>
       </div>
       <div>
         <a href="#profileFastPass" class="modal-trigger modal-close waves-effect waves-green btn">None. Show All Rides.</a>
@@ -201,6 +201,17 @@
                     <label>Height Restriction:</label>
                 </div>
             </form>
+        <div class="row">
+            <form class="col s12 center-align">
+                <div class="input-field center-align col s8 ">
+                    <select id="heightRestrict" class="col s8">
+                        <option value="" disabled selected>Physical Restrictions</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select>
+                </div>
+            </form>
+        </div>
             <a href="#profileFastPass" class="waves-effect waves-green btn modal-close modal-trigger" type="submit">Submit</a>
             </div>
       </div>
