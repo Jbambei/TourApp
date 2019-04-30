@@ -20,44 +20,40 @@
 <body>
   <!-- start header -->
   <header>
-    <!-- Materialize side nav -->
-  </header>
-    <main>
-            <div class="scheduleCardsPage">
         
-                    <nav>
-                    <div class="nav-wrapper blue">
-                        <a href="#!" class="brand-logo right">Logo</a>
-                        <a href="#" data-target="slide-out" class="show sidenav-trigger"><i class="material-icons">menu</i></a>
-                        <ul class="left hide-on-med-and-down">
-                                <li><a href="#profileCreate" class="modal-trigger sidenav-close">Create Profile</a></li>
-                                <li><a href="#!">Add Break</a></li>
-                                <li><div class="divider"></div></li>
-                                <li><a class="waves-effect" href="#!">New Schedule</a></li>
-                                <button onclick="mainApp.logOut()">logOut</button>
-                        </ul>
-                    </div>
-                    </nav>
-                            
-                    <ul id="slide-out" class="sidenav">
-                            <li>
-                              <div class="user-view">
-                              <div class="background">
-                                <img src="https://picsum.photos/300/200">
-                              </div>
-                              <a href="#user"><img class="circle" src="https://picsum.photos/100"></a>
-                              <a href="#name"><span class="white-text name">John Doe</span></a>
-                              <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                            </div></li>
-                            <li><a href="#profileCreate" class="modal-trigger sidenav-close"><i class="material-icons">cloud</i>Create Profile</a></li>
+                <nav>
+                <div class="nav-wrapper blue">
+                    <a href="#!" class="brand-logo right">Logo</a>
+                    <a href="#" data-target="slide-out" class="show sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="left hide-on-med-and-down">
+                            <li><a href="#profileCreate" class="modal-trigger sidenav-close">Create Profile</a></li>
                             <li><a href="#!">Add Break</a></li>
                             <li><div class="divider"></div></li>
                             <li><a class="waves-effect" href="#!">New Schedule</a></li>
                             <button onclick="mainApp.logOut()">logOut</button>
-                          </ul>
-
-                  
-                
+                    </ul>
+                </div>
+                </nav>
+                        
+                <ul id="slide-out" class="sidenav">
+                        <li>
+                          <div class="user-view">
+                          <div class="background">
+                            <img src="https://picsum.photos/300/200">
+                          </div>
+                          <a href="#user"><img class="circle" src="https://picsum.photos/100"></a>
+                          <a href="#name"><span class="white-text name">John Doe</span></a>
+                          <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                        </div></li>
+                        <li><a href="#profileCreate" class="modal-trigger sidenav-close"><i class="material-icons">cloud</i>Create Profile</a></li>
+                        <li><a href="#!">Add Break</a></li>
+                        <li><div class="divider"></div></li>
+                        <li><a class="waves-effect" href="#!">New Schedule</a></li>
+                        <button onclick="mainApp.logOut()">logOut</button>
+                      </ul>
+  </header>
+    <main>         
+            <div class="scheduleCardsPage">
                     <div class="center-align">
                         <div class="input-field col s12" >
                             <select>
@@ -163,12 +159,23 @@
     <!-- Modal Structure -->
     <div id="profileCreate" class="modal center-align">
       <div class="modal-content center-align">
-        <h4>Profile Creation</h4>
-        <p>Let's Create your profile!  First off, what kind of rides fit your party?  Your options are Thrilling (Space Mountain, Thunder Mountain), Easy (The little Mermaid, Dumbo), No Preference </p>
-        <div>
+            <h4 class="center-align">Create Your Profile</h4>
+            <p class="center-align">Let's Start With Your Name, and what kinds of rides you like!</p>
+            <div class="row">
+                <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    <input placeholder="Jon Doe" id="riderName-input" type="text" class="validate">
+                    <label for="riderName">Profile Name</label>
+                    </div> 
+                    </form>       
+                    <br>
+                </div>
+                    <div class="row col s12">
             <a href="#profileRestrict" class="waves-effect waves-green btn modal-trigger modal-close">Thrilling</a>
             <a href="#profileRestrict" class="waves-effect waves-green btn modal-trigger modal-close">Easy</a>
             <a href="#profileRestrict" class="waves-effect waves-green btn modal-trigger modal-close">No Preference</a>
+        </div>
         </div>
     </div>
 
@@ -296,7 +303,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--Moment-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
    

@@ -8,8 +8,9 @@ var uid = null;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // User is signed in.
-        //think we are saving user password here
+        //capturing user id on login
         uid = user.uid;
+        console.log(uid)
       }else{
         //redirect to login page
         uid = null;
