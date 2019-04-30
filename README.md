@@ -29,6 +29,27 @@ Creates a daily schedule for a Disney theme park
         -1 get it working
         -create databases
 
+    
+    JS functions needed:
+        function priority()
+            //assigns priority variable to each and every ride
+        function scheduleSort()
+            // sorts them in order of priority
+        function scheduleReset()
+            clears previous schedule out of the html, and resets all variables
+        function placeFP()
+            //places FPs on the preliminary list
+        function breaks()
+            //places breaks on the preliminary list
+        function timeCalculation()
+            //calculate walking times
+        function generateSchedule
+            // generates schedule with priority in mind (and the FP/breaks blocks), and outputs the schedule to the frontend
+        function favoriteCheck
+            //checks if all favorites are on the list (limit to 2/3). If not, adds priority and calls genschedule again
+        function 
+        
+
     frontend 
         -look & feel
         create html & css elements
@@ -36,3 +57,6 @@ Creates a daily schedule for a Disney theme park
         wires
         functionality
         materialize-what components do we need?
+
+
+
