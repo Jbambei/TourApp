@@ -48,11 +48,7 @@ Creates a daily schedule for a Disney theme park
         function generateSchedule
             // generates schedule with priority in mind (and the FP/breaks blocks), and outputs the schedule to the frontend
         function favoriteCheck
-            //checks if all favorites are on the list (limit to 2/3). If not, adds priority and calls genschedule again
-
-
-        //for local priority, in local
-        
+            //checks if all favorites are on the list (limit to 2/3). If not, adds priority and calls genschedule again.        
 
     frontend 
         -look & feel
@@ -64,3 +60,4 @@ Creates a daily schedule for a Disney theme park
 
 
 
+text to push
