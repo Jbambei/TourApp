@@ -33,6 +33,8 @@ Creates a daily schedule for a Disney theme park
     JS functions needed:
         function priority()
             //assigns priority variable to each and every ride
+                //local ride priority based on 1-5 rating, then for multiple 3s make some 3.01/3.02/3.03 etc 
+
         function scheduleSort()
             // sorts them in order of priority
         function scheduleReset()
@@ -46,9 +48,7 @@ Creates a daily schedule for a Disney theme park
         function generateSchedule
             // generates schedule with priority in mind (and the FP/breaks blocks), and outputs the schedule to the frontend
         function favoriteCheck
-            //checks if all favorites are on the list (limit to 2/3). If not, adds priority and calls genschedule again
-        function 
-        
+            //checks if all favorites are on the list (limit to 2/3). If not, adds priority and calls genschedule again.        
 
     frontend 
         -look & feel
@@ -60,3 +60,4 @@ Creates a daily schedule for a Disney theme park
 
 
 
+text to push
