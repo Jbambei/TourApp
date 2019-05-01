@@ -193,8 +193,10 @@
                         <label>Your Rider Type:</label>
                     </div>
                 </form>
-                <a href="#profileFastPass" class="waves-effect waves-green btn modal-close modal-trigger"
-                    type="submit">Submit</a>
+                <div class="row center-align">
+                    <a href="#profileRestrict" class="waves-effect waves-green btn modal-close modal-trigger"
+                        id="riderTypeSubmit" type="submit">Submit</a>
+                </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Back</a>
@@ -209,38 +211,34 @@
             <p>Let's set some height or physical restrictions. Choose from the options below on which height
                 restrictions to exclude.</p>
         </div>
-        <div>
-            <a href="#profileFastPass" class="modal-trigger modal-close waves-effect waves-green btn">None. Show All
-                Rides.</a>
+        <div class="row">
+            <form class="col s12 center-align">
+                <div class="input-field center-align col s8 ">
+                    <select id="heightRestrict" class="col s8">
+                        <option value="" disabled selected>Select a Restriction</option>
+                        <option value="1">No height restrictions</option>
+                        <option value="2">Show only rides below 48"</option>
+                        <option value="3">Show only rides below 44"</option>
+                        <option value="4">Show only rides below 40"</option>
+                        <option value="5">Show only rides below 38"</option>
+
+                    </select>
+                    <label>Height Restriction:</label>
+                </div>
+            </form>
             <div class="row">
                 <form class="col s12 center-align">
                     <div class="input-field center-align col s8 ">
-                        <select id="heightRestrict" class="col s8">
-                            <option value="" disabled selected>Select a Restriction</option>
-                            <option value="1">No height restrictions</option>
-                            <option value="2">Show only rides below 48"</option>
-                            <option value="3">Show only rides below 44"</option>
-                            <option value="4">Show only rides below 40"</option>
-                            <option value="5">Show only rides below 38"</option>
-
+                        <select id="physicalRestrict" class="col s8">
+                            <option value="" disabled selected>Physical Restrictions</option>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
                         </select>
-                        <label>Height Restriction:</label>
                     </div>
                 </form>
-                <div class="row">
-                    <form class="col s12 center-align">
-                        <div class="input-field center-align col s8 ">
-                            <select id="physicalRestrict" class="col s8">
-                                <option value="" disabled selected>Physical Restrictions</option>
-                                <option value="1">Yes</option>
-                                <option value="2">No</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <a href="#profileFastPass" class="waves-effect waves-green btn modal-close modal-trigger"
-                    type="submit">Submit</a>
             </div>
+            <a href="#profileFastPass" id="riderRestrictSubmit"
+                class="waves-effect waves-green btn modal-close modal-trigger" type="submit">Submit</a>
         </div>
 
         <div class="modal-footer">
@@ -285,7 +283,7 @@
                         </div>
                     </div>
                     <div class="row">
-                            <div class="input-field center-align col s6">
+                        <div class="input-field center-align col s6">
                             <select id="thirdFPRide" class="col s6">
                                 <option value="" disabled selected>Select Your Third Fastpass Ride</option>
                                 <option value="1">Space Mountain</option>
@@ -298,20 +296,20 @@
                             <label for="thirdFPTime">Time</label>
                         </div>
                     </div>
-                    
+
                 </form>
                 <a href="#profileFavorites" class="center-align waves-effect waves-green btn modal-close modal-trigger"
-                type="submit">Submit</a>
+                    id="riderFastPassSubmit" type="submit">Submit</a>
 
             </div>
 
-        <div class="modal-footer">
+            <div class="modal-footer">
                 <a href="#profileRestrict"
                     class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close">Back</a>
-                    <a href="#profileFavorites"
+                <a href="#profileFavorites"
                     class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close">Skip This Step</a>
             </div>
-            </div>
+        </div>
     </div>
 
     <div id="profileFavorites" class="modal">
@@ -322,46 +320,47 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="firstFavRide" type="text" class="validate">
-                            <label for="firstFavRide">Ride</label>
+                        <div class="input-field center-align col s6">
+                            <select id="firstFavRide" class="col s6">
+                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
+                                <option value="1">Space Mountain</option>
+                                <option value="2">Splash Mountain</option>
+                            </select>
+                            <label for="firstFavRide">Your First Favorite Ride</label>
                         </div>
                     </div>
-                </form>
-            </div>
 
-            <div class="row">
-                <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="secondFavRide" type="text" class="validate">
-                            <label for="secondFavRide">Ride</label>
+                        <div class="input-field center-align col s6">
+                            <select id="secondFavRide" class="col s6">
+                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
+                                <option value="1">Space Mountain</option>
+                                <option value="2">Splash Mountain</option>
+                            </select>
+                            <label for="secondFavRide">Your Second Favorite Ride</label>
                         </div>
                     </div>
-                </form>
-            </div>
-
-            <div class="row">
-                <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="thirdFavRide" type="text" class="validate">
-                            <label for="thirdFavRide">Ride</label>
+                        <div class="input-field center-align col s6">
+                            <select id="thirdFavRide" class="col s6">
+                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
+                                <option value="1">Space Mountain</option>
+                                <option value="2">Splash Mountain</option>
+                            </select>
+                            <label for="thirdFavRide">Your Third Favorite Ride</label>
                         </div>
                     </div>
                 </form>
-                <a href="#!" class="center-align waves-effect waves-green btn modal-close"
-                type="submit">Submit</a>
+                <a class="center-align waves-effect waves-green btn modal-close" id="favoriteSubmit" type="submit">Submit</a>
             </div>
 
 
-        <div class="modal-footer">
-            <a href="#profileFastPass"
-                class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close">Back</a>
-            <a href="#!"
-                class="modal-close waves-effect waves-green btn-flat modal-close">Skip This Step</a>
+            <div class="modal-footer">
+                <a href="#profileFastPass"
+                    class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close">Back</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat modal-close">Skip This Step</a>
+            </div>
         </div>
-    </div>
     </div>
 
 
