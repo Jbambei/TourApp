@@ -51,7 +51,7 @@ $.ajax({
 */
 
  
-
+//options for drop down menus of rides for fast pass and favorites
 var rideNames=  ["Astro Orbiter","Barnstormer","Big Thunder Mountain Railroad","Buzz LightYear's Space Ranger Spin","Country Bears' Jamboree","Dumbo","The Hall of Presidents","The Haunted Mansion","'It's a small world'","Jungle Cruise","Mad Tea Party","The Magic Carpets of Aladdin" ,"The Many Adventures of Winnie the Pooh","Peter Pan's Flight","Pirate's of the Caribbean", "Prince Charming's Regal Carousel","Seven Dwarves Mine Train","Space Mountain","Splash Mountain","Swiss Family Robinson Tree House","Tom Sawyer's Island","Transit Authority PeopleMover","Under the Sea","Walt Disney's Carousel of Progress" ,"Walt Disney's Enchanted Tiki Room"]
 for (var i=0; i < rideNames.length; i++){
   console.log(rideNames[i])
@@ -149,7 +149,7 @@ $(document).ready(function(){
 
 
 
-
+/* This is the code to make the materialize cards, I have commented where we need info input
 
 var newDiv1= $("<div>").addClass("row")
 //need time of attraction added\/
@@ -195,36 +195,11 @@ newDiv5.append(newDiv6, newDiv7)
 
 newDiv3.append(newDiv4, newDiv5)
 
-<div class="row">
-<p class="col s1">9:30</p>
-<div class="col s11 m6">
-    <div class="card">
-        <div class="card-image">
-            <img src="assets/images/splashMountainSample.jpg">
-            <span class="card-title">Minutes</span>
-            <a class="btn-floating halfway-fab waves-effect waves-light blue"><i
-                    class="material-icons right">cloud</i></a>
-        </div>
-        <div class="card-content">
-            <div class="row">
-                <a class="waves-effect waves-light btn-large col s2"><i
-                        class="material-icons">check</i></a>
-                <p class="col s10">Splash Mountain</p>
-                <p class="col s10">Ride Location</p>
-            </div>
-            <div class="row">
-                <a class="waves-effect waves-light btn-large col s2"><i
-                        class="material-icons">clear</i></a>
-                <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
-                    lalalalala lalala lalalal lalalalala lalalalala</p>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+newDiv2.append(newDiv3)
 
+newDiv1.append(newTimeP, newDiv2)
 
-
+*/
 
 
 
