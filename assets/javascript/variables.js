@@ -1,7 +1,7 @@
 //rides are named as-is from their paper shorthand, rather than full official names except for Prince Charming Carousel to distingush it from carousel of progress
 //height is in inches
 
-AdventurelandArr [
+var AdventurelandArr = [
     {
         name: "Pirates",
         height: "any",
@@ -29,7 +29,7 @@ AdventurelandArr [
     }
 ]
 
-frontierlandArr [
+var frontierlandArr = [
         {
             name: "Splash Mountain",
             height: 40,
@@ -52,7 +52,7 @@ frontierlandArr [
         }
 ]
 
-LibertylandArr [
+var LibertylandArr = [
     {
         name: "Haunted Mansion",
         height: "any",
@@ -65,7 +65,7 @@ LibertylandArr [
     }
 ]
 
-FantasylandArr [
+var FantasylandArr = [
     {
         name: "Seven Dwarves",
         height: 38,
@@ -112,7 +112,7 @@ FantasylandArr [
         thrill: false
     }
 ]
-TomorrowlandArr [
+var TomorrowlandArr = [
     {
         name: "Space Mountain",
         height: "44",
