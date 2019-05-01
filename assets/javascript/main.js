@@ -26,6 +26,43 @@ var uid = null;
 
 
 
+
+
+var rides= ["astro-orbiter","barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree","dumbo-the-flying-elephant","hall-of-presidents", "haunted-mansion","its-a-small-world", "jungle-cruise","mad-tea-party","magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean","prince-charming-regal-carrousel", "seven-dwarfs-mine-train","space-mountain", "splash-mountain","tomorrowland-speedway","tomorrowland-transit-authority-peoplemover", "under-the-sea","walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
+
+
+
+for(var i=0; i< rides.length ; i++){
+  ride = rides[i]
+  var proxyurl = "https://cors-anywhere.herokuapp.com/"
+  var url = "https://touringplans.com/magic-kingdom/attractions/"+ ride + ".json"
+  var newURL = proxyurl + url 
+  
+$.ajax({
+  url: newURL,
+  method: "GET"
+})
+.then(function(response){
+  // var results = response.data;
+  console.log(response.name + ": " + response["average_wait_per_hundred"])
+})
+}
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function(){
   $("#riderTypeSubmit").on("click", function(event) {
     event.preventDefault();
