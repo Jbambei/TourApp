@@ -1,5 +1,6 @@
 //rides are named as-is from their paper shorthand, rather than full official names except for Prince Charming Carousel to distingush it from carousel of progress
 //height is in inches
+//updated 
 
 var AdventurelandArr = [
     {
