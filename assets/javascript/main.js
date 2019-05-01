@@ -51,7 +51,7 @@ $.ajax({
 */
 
  
-
+//options for drop down menus of rides for fast pass and favorites
 var rideNames=  ["Astro Orbiter","Barnstormer","Big Thunder Mountain Railroad","Buzz LightYear's Space Ranger Spin","Country Bears' Jamboree","Dumbo","The Hall of Presidents","The Haunted Mansion","'It's a small world'","Jungle Cruise","Mad Tea Party","The Magic Carpets of Aladdin" ,"The Many Adventures of Winnie the Pooh","Peter Pan's Flight","Pirate's of the Caribbean", "Prince Charming's Regal Carousel","Seven Dwarves Mine Train","Space Mountain","Splash Mountain","Swiss Family Robinson Tree House","Tom Sawyer's Island","Transit Authority PeopleMover","Under the Sea","Walt Disney's Carousel of Progress" ,"Walt Disney's Enchanted Tiki Room"]
 for (var i=0; i < rideNames.length; i++){
   console.log(rideNames[i])
@@ -146,6 +146,61 @@ $(document).ready(function(){
 
 
 
+
+
+
+/* This is the code to make the materialize cards, I have commented where we need info input
+
+var newDiv1= $("<div>").addClass("row")
+//need time of attraction added\/
+var newTimeP= $("<p>").addClass("col s1").text()
+var newDiv2 = $("<div>").addClass("col s11 m6")
+var newDiv3 = $("<div>").addClass("card")
+var newDiv4 = $("<div>").addClass("card-image")
+//need img file path\/
+var newImg = $("<img>").attr("src", "")
+//need how many minutes for attraction \/
+var newSpan = $("<span").addClass("card-title").text()
+var newA = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light blue")
+var newI = $("<i>").addClass("material-icons right").text("cloud")
+
+newA.append(newI)
+newDiv4.append(newImg, newSpan, newA)
+
+var newDiv5= $("<div>").addClass("card-content")
+var newDiv6= $("<div>").addClass("row")
+var newA2 = $("<a>").addClass("waves-effect waves-light btn-large col s2")
+var newI2 = $("<i>").addClass("material-icons").text("check")
+//need ride name \/
+var newP2 = $("<p>").addClass("col s10").text()
+//need ride location \/
+var newP3 = $("<p>").addClass("col s10").text()
+
+
+newA2.append(newI1)
+newDiv6.append(newA2, newP2, newP3)
+newDiv5.append(newDiv6)
+
+var newDiv7= $("<div>").addClass("row")
+var newA3 = $("<a>").addClass("waves-effect waves-light btn-large col s2")
+var newI3 = $("<i>").addClass("material-icons").text("clear")
+//need ride description text \/
+var newP4= $("<p>").addClass("col s10").text()
+
+newA3.append(newI3)
+newDiv7.append(newA3, newP4)
+
+
+newDiv5.append(newDiv6, newDiv7)
+
+newDiv3.append(newDiv4, newDiv5)
+
+newDiv2.append(newDiv3)
+
+newDiv1.append(newTimeP, newDiv2)
+
+$("#putCardsHere").append(newDiv1)
+*/
 
 
 
