@@ -56,12 +56,17 @@ var rideNames=  ["Astro Orbiter","Barnstormer","Big Thunder Mountain Railroad","
 for (var i=0; i < rideNames.length; i++){
   console.log(rideNames[i])
   var newOption= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption2= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption3= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption4= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption5= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption6= $("<option>").attr("value", (i+1)).text(rideNames[i])
   $("#firstFPRide").append(newOption)
-  $("#secondFPRide").append(newOption)
-  $("#thirdFPRide").append(newOption)
-  $("#firstFavRide").append(newOption)
-  $("#secondFavRide").append(newOption)
-  $("#thirdFavRide").append(newOption)
+  $("#secondFPRide").append(newOption2)
+  $("#thirdFPRide").append(newOption3)
+  $("#firstFavRide").append(newOption4)
+  $("#secondFavRide").append(newOption5)
+  $("#thirdFavRide").append(newOption6)
 
 
 }

@@ -178,12 +178,12 @@
             <p class="center-align">Let's start with making a profile name, and what kinds of rides you like!</p>
             <div class="row">
                 <form class="col s12 center-align">
-                    <div class="input-field col s6">
-                        <input placeholder="i.e: with kids, with buds" id="riderName-input" type="text" class="validate">
+                    <div class="input-field col s12">
+                        <input placeholder="i.e: with kids, with buds" id="riderName-input" type="text" class="validate col s12">
                         <label for="riderName">Profile Name</label>
                     </div>
-                    <div class="input-field center-align col s8 ">
-                        <select id="profileType" class="col s8">
+                    <div class="input-field center-align col s12 ">
+                        <select id="profileType" class="col s12">
                             <option value="" disabled selected>Select a Rider Type</option>
                             <option value="1">No Preference</option>
                             <option value="2">Thrill Seeker</option>
@@ -195,7 +195,7 @@
                 </form>
                 <div class="row center-align">
                     <a href="#profileRestrict" class="waves-effect waves-green btn modal-close modal-trigger"
-                        id="profileSave" type="submit">Next</a>
+                        id="next" type="submit">Next</a>
                 </div>
             </div>
             <div class="modal-footer">
@@ -213,8 +213,8 @@
         </div>
         <div class="row">
             <form class="col s12 center-align">
-                <div class="input-field center-align col s8 ">
-                    <select id="heightRestrict" class="col s8">
+                <div class="input-field center-align col s12 ">
+                    <select id="heightRestrict" class="col s12">
                         <option value="" disabled selected>Select a Height Restriction</option>
                         <option value="1">No height restrictions</option>
                         <option value="2">Show only rides below 48"</option>
@@ -228,8 +228,8 @@
             </form>
             <div class="row">
                 <form class="col s12 center-align">
-                    <div class="input-field center-align col s8 ">
-                        <select id="physicalRestrict" class="col s8">
+                    <div class="input-field center-align col s12 ">
+                        <select id="physicalRestrict" class="col s12">
                             <option value="" disabled selected>Physical Restrictions</option>
                             <option value="1">Yes</option>
                             <option value="2">No</option>
@@ -255,64 +255,39 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="firstFPRide" class="col s6">
-                                <option value="" disabled selected>Select Your First Fastpass Ride</option>
+                        <div class="input-field center-align col s8">
+                            <select id="firstFPRide" class="col s8">
+                                <option value="" disabled selected>First Fastpass</option>
                             
                             </select>
                 
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input id="firstFPTime" type="text" class="validate">
                             <label for="firstFPTime">Time</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="secondFPRide" class="col s6">
-                                <option value="" disabled selected>Select Your Second Fastpass Ride</option>
+                        <div class="input-field center-align col s8">
+                            <select id="secondFPRide" class="col s8">
+                                <option value="" disabled selected>Second Fastpass</option>
                                 
                             </select>
                            
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input id="secondFPTime" type="text" class="validate">
                             <label for="secondFPTime">Time</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="thirdFPRide" class="col s6">
-                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
-                                <option value="1">Astro Orbiter</option>
-                                <option value="2">Barnstormer</option>
-                                <option value="3">Big Thunder Mountain Railroad</option>
-                                <option value="4">Buzz LightYear's Space Ranger Spin</option>
-                                <option value="5">Country Bears' Jamboree</option>
-                                <option value="6">Dumbo</option>
-                                <option value="7">The Hall of Presidents</option>
-                                <option value="8">The Haunted Mansion</option>
-                                <option value="9">"It's a small world"</option>
-                                <option value="10">Jungle Cruise</option>
-                                <option value="11">Mad Tea Party</option>
-                                <option value="12">The Magic Carpets of Aladding</option>
-                                <option value="13">The Many Adventures of Winnie the Pooh</option>
-                                <option value="14">Peter Pan's Flight</option>
-                                <option value="15">Pirate's of the Caribbean</option>
-                                <option value="16">Prince Charming's Regal Carousel</option>
-                                <option value="17">Seven Dwarves Mine Train</option>
-                                <option value="18">Space Mountain</option>
-                                <option value="19">Splash Mountain</option>
-                                <option value="20">Swiss Family Robinson Tree House</option>
-                                <option value="21">Tom Sawyer's Island</option>
-                                <option value="22">Transit Authority PeopleMover</option>
-                                <option value="23">Under the Sea</option>
-                                <option value="24">Walt Disney's Carousel of Progress</option>
-                                <option value="25">Walt Disney's Enchanted Tiki Room</option>
+                        <div class="input-field center-align col s8">
+                            <select id="thirdFPRide" class="col s8">
+                                    <option value="" disabled selected>Third Fastpass</option>
                             </select>
                             
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input id="thirdFPTime" type="text" class="validate">
                             <label for="thirdFPTime">Time</label>
                         </div>
@@ -341,101 +316,27 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="firstFavRide" class="col s6">
+                        <div class="input-field center-align col s12">
+                            <select id="firstFavRide" class="col s12">
                                 <option value="" disabled selected>Your First Favorite Ride</option>
-                                <option value="1">Astro Orbiter</option>
-                                <option value="2">Barnstormer</option>
-                                <option value="3">Big Thunder Mountain Railroad</option>
-                                <option value="4">Buzz LightYear's Space Ranger Spin</option>
-                                <option value="5">Country Bears' Jamboree</option>
-                                <option value="6">Dumbo</option>
-                                <option value="7">The Hall of Presidents</option>
-                                <option value="8">The Haunted Mansion</option>
-                                <option value="9">"It's a small world"</option>
-                                <option value="10">Jungle Cruise</option>
-                                <option value="11">Mad Tea Party</option>
-                                <option value="12">The Magic Carpets of Aladding</option>
-                                <option value="13">The Many Adventures of Winnie the Pooh</option>
-                                <option value="14">Peter Pan's Flight</option>
-                                <option value="15">Pirate's of the Caribbean</option>
-                                <option value="16">Prince Charming's Regal Carousel</option>
-                                <option value="17">Seven Dwarves Mine Train</option>
-                                <option value="18">Space Mountain</option>
-                                <option value="19">Splash Mountain</option>
-                                <option value="20">Swiss Family Robinson Tree House</option>
-                                <option value="21">Tom Sawyer's Island</option>
-                                <option value="22">Transit Authority PeopleMover</option>
-                                <option value="23">Under the Sea</option>
-                                <option value="24">Walt Disney's Carousel of Progress</option>
-                                <option value="25">Walt Disney's Enchanted Tiki Room</option>
+                     
                             </select>
                            
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="secondFavRide" class="col s6">
-                                <option value="" disabled selected>Your Second Favorite Ride</option>
-                                <option value="1">Astro Orbiter</option>
-                                <option value="2">Barnstormer</option>
-                                <option value="3">Big Thunder Mountain Railroad</option>
-                                <option value="4">Buzz LightYear's Space Ranger Spin</option>
-                                <option value="5">Country Bears' Jamboree</option>
-                                <option value="6">Dumbo</option>
-                                <option value="7">The Hall of Presidents</option>
-                                <option value="8">The Haunted Mansion</option>
-                                <option value="9">"It's a small world"</option>
-                                <option value="10">Jungle Cruise</option>
-                                <option value="11">Mad Tea Party</option>
-                                <option value="12">The Magic Carpets of Aladding</option>
-                                <option value="13">The Many Adventures of Winnie the Pooh</option>
-                                <option value="14">Peter Pan's Flight</option>
-                                <option value="15">Pirate's of the Caribbean</option>
-                                <option value="16">Prince Charming's Regal Carousel</option>
-                                <option value="17">Seven Dwarves Mine Train</option>
-                                <option value="18">Space Mountain</option>
-                                <option value="19">Splash Mountain</option>
-                                <option value="20">Swiss Family Robinson Tree House</option>
-                                <option value="21">Tom Sawyer's Island</option>
-                                <option value="22">Transit Authority PeopleMover</option>
-                                <option value="23">Under the Sea</option>
-                                <option value="24">Walt Disney's Carousel of Progress</option>
-                                <option value="25">Walt Disney's Enchanted Tiki Room</option>
+                        <div class="input-field center-align col s12">
+                            <select id="secondFavRide" class="col s12">
+                                    <option value="" disabled selected>Your Second Favorite Ride</option>
                             </select>
                          
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="thirdFavRide" class="col s6">
-                                <option value="" disabled selected>Your Third Favorite Ride</option>
-                                <option value="1">Astro Orbiter</option>
-                                <option value="2">Barnstormer</option>
-                                <option value="3">Big Thunder Mountain Railroad</option>
-                                <option value="4">Buzz LightYear's Space Ranger Spin</option>
-                                <option value="5">Country Bears' Jamboree</option>
-                                <option value="6">Dumbo</option>
-                                <option value="7">The Hall of Presidents</option>
-                                <option value="8">The Haunted Mansion</option>
-                                <option value="9">"It's a small world"</option>
-                                <option value="10">Jungle Cruise</option>
-                                <option value="11">Mad Tea Party</option>
-                                <option value="12">The Magic Carpets of Aladding</option>
-                                <option value="13">The Many Adventures of Winnie the Pooh</option>
-                                <option value="14">Peter Pan's Flight</option>
-                                <option value="15">Pirate's of the Caribbean</option>
-                                <option value="16">Prince Charming's Regal Carousel</option>
-                                <option value="17">Seven Dwarves Mine Train</option>
-                                <option value="18">Space Mountain</option>
-                                <option value="19">Splash Mountain</option>
-                                <option value="20">Swiss Family Robinson Tree House</option>
-                                <option value="21">Tom Sawyer's Island</option>
-                                <option value="22">Transit Authority PeopleMover</option>
-                                <option value="23">Under the Sea</option>
-                                <option value="24">Walt Disney's Carousel of Progress</option>
-                                <option value="25">Walt Disney's Enchanted Tiki Room</option>
+                        <div class="input-field center-align col s12">
+                            <select id="thirdFavRide" class="col s12">
+                                    <option value="" disabled selected>Your Third Favorite Ride</option>
                             </select>
                            
                         </div>
