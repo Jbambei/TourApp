@@ -175,15 +175,15 @@
     <div id="profileCreate" class="modal center-align">
         <div class="modal-content center-align">
             <h4 class="center-align">Create Your Profile</h4>
-            <p class="center-align">Let's Start With Your Name, and what kinds of rides you like!</p>
+            <p class="center-align">Let's start with making a profile name, and what kinds of rides you like!</p>
             <div class="row">
                 <form class="col s12 center-align">
-                    <div class="input-field col s6">
-                        <input placeholder="Jon Doe" id="riderName-input" type="text" class="validate">
+                    <div class="input-field col s12">
+                        <input placeholder="i.e: with kids, with buds" id="riderName-input" type="text" class="validate col s12">
                         <label for="riderName">Profile Name</label>
                     </div>
-                    <div class="input-field center-align col s8 ">
-                        <select id="profileType" class="col s8">
+                    <div class="input-field center-align col s12 ">
+                        <select id="profileType" class="col s12">
                             <option value="" disabled selected>Select a Rider Type</option>
                             <option value="1">No Preference</option>
                             <option value="2">Thrill Seeker</option>
@@ -195,7 +195,7 @@
                 </form>
                 <div class="row center-align">
                     <a href="#profileRestrict" class="waves-effect waves-green btn modal-close modal-trigger"
-                        id="profileSave" type="submit">Submit</a>
+                        id="next" type="submit">Next</a>
                 </div>
             </div>
             <div class="modal-footer">
@@ -213,9 +213,9 @@
         </div>
         <div class="row">
             <form class="col s12 center-align">
-                <div class="input-field center-align col s8 ">
-                    <select id="heightRestrict" class="col s8">
-                        <option value="" disabled selected>Select a Restriction</option>
+                <div class="input-field center-align col s12 ">
+                    <select id="heightRestrict" class="col s12">
+                        <option value="" disabled selected>Select a Height Restriction</option>
                         <option value="1">No height restrictions</option>
                         <option value="2">Show only rides below 48"</option>
                         <option value="3">Show only rides below 44"</option>
@@ -223,13 +223,13 @@
                         <option value="5">Show only rides below 38"</option>
 
                     </select>
-                    <label>Height Restriction:</label>
+                    
                 </div>
             </form>
             <div class="row">
                 <form class="col s12 center-align">
-                    <div class="input-field center-align col s8 ">
-                        <select id="physicalRestrict" class="col s8">
+                    <div class="input-field center-align col s12 ">
+                        <select id="physicalRestrict" class="col s12">
                             <option value="" disabled selected>Physical Restrictions</option>
                             <option value="1">Yes</option>
                             <option value="2">No</option>
@@ -238,7 +238,7 @@
                 </form>
             </div>
             <a href="#profileFastPass" id="riderRestrictSubmit"
-                class="waves-effect waves-green btn modal-close modal-trigger" type="submit">Submit</a>
+                class="waves-effect waves-green btn modal-close modal-trigger" type="submit">Submit Profile</a>
         </div>
 
         <div class="modal-footer">
@@ -255,43 +255,39 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="firstFPRide" class="col s6">
-                                <option value="" disabled selected>Select Your First Fastpass Ride</option>
-                                <option value="1">Space Mountain</option>
-                                <option value="2">Splash Mountain</option>
+                        <div class="input-field center-align col s8">
+                            <select id="firstFPRide" class="col s8">
+                                <option value="" disabled selected>First Fastpass</option>
+                            
                             </select>
-                            <label for="firstFPRide">Your First Fastpass</label>
+                
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input id="firstFPTime" type="text" class="validate">
                             <label for="firstFPTime">Time</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="secondFPRide" class="col s6">
-                                <option value="" disabled selected>Select Your Second Fastpass Ride</option>
-                                <option value="1">Space Mountain</option>
-                                <option value="2">Splash Mountain</option>
+                        <div class="input-field center-align col s8">
+                            <select id="secondFPRide" class="col s8">
+                                <option value="" disabled selected>Second Fastpass</option>
+                                
                             </select>
-                            <label for="secondFPRide">Your Second Fastpass</label>
+                           
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input id="secondFPTime" type="text" class="validate">
                             <label for="secondFPTime">Time</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="thirdFPRide" class="col s6">
-                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
-                                <option value="1">Space Mountain</option>
-                                <option value="2">Splash Mountain</option>
+                        <div class="input-field center-align col s8">
+                            <select id="thirdFPRide" class="col s8">
+                                    <option value="" disabled selected>Third Fastpass</option>
                             </select>
-                            <label for="thirdFPRide">Your Third Fastpass</label>
+                            
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input id="thirdFPTime" type="text" class="validate">
                             <label for="thirdFPTime">Time</label>
                         </div>
@@ -320,34 +316,29 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="firstFavRide" class="col s6">
-                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
-                                <option value="1">Space Mountain</option>
-                                <option value="2">Splash Mountain</option>
+                        <div class="input-field center-align col s12">
+                            <select id="firstFavRide" class="col s12">
+                                <option value="" disabled selected>Your First Favorite Ride</option>
+                     
                             </select>
-                            <label for="firstFavRide">Your First Favorite Ride</label>
+                           
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="secondFavRide" class="col s6">
-                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
-                                <option value="1">Space Mountain</option>
-                                <option value="2">Splash Mountain</option>
+                        <div class="input-field center-align col s12">
+                            <select id="secondFavRide" class="col s12">
+                                    <option value="" disabled selected>Your Second Favorite Ride</option>
                             </select>
-                            <label for="secondFavRide">Your Second Favorite Ride</label>
+                         
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s6">
-                            <select id="thirdFavRide" class="col s6">
-                                <option value="" disabled selected>Select Your Third Fastpass Ride</option>
-                                <option value="1">Space Mountain</option>
-                                <option value="2">Splash Mountain</option>
+                        <div class="input-field center-align col s12">
+                            <select id="thirdFavRide" class="col s12">
+                                    <option value="" disabled selected>Your Third Favorite Ride</option>
                             </select>
-                            <label for="thirdFavRide">Your Third Favorite Ride</label>
+                           
                         </div>
                     </div>
                 </form>
@@ -373,6 +364,7 @@
 
     <!--Ours-->
     <script src="assets/javascript/firebase.js"></script>
+    
     <script src="assets/javascript/main.js"></script>
 
 

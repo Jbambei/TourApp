@@ -26,7 +26,7 @@ var uid = null;
 
 
 
-
+/*
 
 var rides= ["astro-orbiter","barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree","dumbo-the-flying-elephant","hall-of-presidents", "haunted-mansion","its-a-small-world", "jungle-cruise","mad-tea-party","magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean","prince-charming-regal-carrousel", "seven-dwarfs-mine-train","space-mountain", "splash-mountain","tomorrowland-speedway","tomorrowland-transit-authority-peoplemover", "under-the-sea","walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
 
@@ -48,13 +48,28 @@ $.ajax({
 })
 }
 
-
+*/
 
  
 
+var rideNames=  ["Astro Orbiter","Barnstormer","Big Thunder Mountain Railroad","Buzz LightYear's Space Ranger Spin","Country Bears' Jamboree","Dumbo","The Hall of Presidents","The Haunted Mansion","'It's a small world'","Jungle Cruise","Mad Tea Party","The Magic Carpets of Aladdin" ,"The Many Adventures of Winnie the Pooh","Peter Pan's Flight","Pirate's of the Caribbean", "Prince Charming's Regal Carousel","Seven Dwarves Mine Train","Space Mountain","Splash Mountain","Swiss Family Robinson Tree House","Tom Sawyer's Island","Transit Authority PeopleMover","Under the Sea","Walt Disney's Carousel of Progress" ,"Walt Disney's Enchanted Tiki Room"]
+for (var i=0; i < rideNames.length; i++){
+  console.log(rideNames[i])
+  var newOption= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption2= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption3= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption4= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption5= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption6= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  $("#firstFPRide").append(newOption)
+  $("#secondFPRide").append(newOption2)
+  $("#thirdFPRide").append(newOption3)
+  $("#firstFavRide").append(newOption4)
+  $("#secondFavRide").append(newOption5)
+  $("#thirdFavRide").append(newOption6)
 
 
-
+}
 
 
 
@@ -128,6 +143,7 @@ $(document).ready(function(){
   $('select').formSelect();
 
 });
+
 
 
 
