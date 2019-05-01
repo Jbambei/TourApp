@@ -199,6 +199,7 @@ newDiv2.append(newDiv3)
 
 newDiv1.append(newTimeP, newDiv2)
 
+$("#putCardsHere").append(newDiv1)
 */
 
 
