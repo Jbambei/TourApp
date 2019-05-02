@@ -1,16 +1,33 @@
 var mainApp={};
-
-var uid = null;
+var firebase;
+var uid;
 
 (function(){
   var firebase = app_fireBase;
   
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
+        var user = firebase.auth().currentUser;
+         uid = user.uid;
+        $(".name").text(user.displayName);
+        $(".email").text(user.email);
+        // this sets their username and email into the sidenav pulled from firebase
+        firebase.database().ref('users/' + uid).set({
+          username: user.displayName,
+          email: user.email
+        });
+        // this is the example for pulling data from firebase
+        firebase.database().ref('fastpass/' + uid).on('value', function(snapshot){ 
+          console.log(snapshot.val().fp1)
+        });
+
+
+
+      
+
         // User is signed in.
         //capturing user id on login
-        uid = user.uid;
-        console.log(uid)
+        console.log(user)
       }else{
         //redirect to login page
         uid = null;
@@ -23,8 +40,6 @@ var uid = null;
   }
   mainApp.logOut = logOut;
 })()
-
-
 
 /*
 
@@ -51,16 +66,16 @@ $.ajax({
 */
 
  
-//options for drop down menus of rides for fast pass and favorites
+
 var rideNames=  ["Astro Orbiter","Barnstormer","Big Thunder Mountain Railroad","Buzz LightYear's Space Ranger Spin","Country Bears' Jamboree","Dumbo","The Hall of Presidents","The Haunted Mansion","'It's a small world'","Jungle Cruise","Mad Tea Party","The Magic Carpets of Aladdin" ,"The Many Adventures of Winnie the Pooh","Peter Pan's Flight","Pirate's of the Caribbean", "Prince Charming's Regal Carousel","Seven Dwarves Mine Train","Space Mountain","Splash Mountain","Swiss Family Robinson Tree House","Tom Sawyer's Island","Transit Authority PeopleMover","Under the Sea","Walt Disney's Carousel of Progress" ,"Walt Disney's Enchanted Tiki Room"]
 for (var i=0; i < rideNames.length; i++){
   console.log(rideNames[i])
-  var newOption= $("<option>").attr("value", (i+1)).text(rideNames[i])
-  var newOption2= $("<option>").attr("value", (i+1)).text(rideNames[i])
-  var newOption3= $("<option>").attr("value", (i+1)).text(rideNames[i])
-  var newOption4= $("<option>").attr("value", (i+1)).text(rideNames[i])
-  var newOption5= $("<option>").attr("value", (i+1)).text(rideNames[i])
-  var newOption6= $("<option>").attr("value", (i+1)).text(rideNames[i])
+  var newOption= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
+  var newOption2= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
+  var newOption3= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
+  var newOption4= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
+  var newOption5= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
+  var newOption6= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
   $("#firstFPRide").append(newOption)
   $("#secondFPRide").append(newOption2)
   $("#thirdFPRide").append(newOption3)
@@ -71,68 +86,88 @@ for (var i=0; i < rideNames.length; i++){
 
 }
 
-
-
-
-
+for (var i=1; i < 13; i++){
+  console.log(i)
+   var hourOption= $("<option>").attr("value", ([i])).text([i])
+   var hourOption2= $("<option>").attr("value", ([i])).text([i])
+   var hourOption3= $("<option>").attr("value", ([i])).text([i])
+   $("#firstFPTimeHour").append(hourOption)
+   $("#secondFPTimeHour").append(hourOption2)
+   $("#thirdFPTimeHour").append(hourOption3)
+}
+var minutes = ["00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"]
+for (var j=0; j < minutes.length; j++){
+  console.log(minutes[j])
+   var minuteOption= $("<option>").attr("value", (minutes[j])).text(minutes[j])
+   var minuteOption2= $("<option>").attr("value", (minutes[j])).text(minutes[j])
+   var minuteOption3= $("<option>").attr("value", (minutes[j])).text(minutes[j])
+   $("#firstFPTimeMinute").append(minuteOption)
+   $("#secondFPTimeMinute").append(minuteOption2)
+   $("#thirdFPTimeMinute").append(minuteOption3)
+}
 
 
 
 $(document).ready(function(){
-  $("#riderTypeSubmit").on("click", function(event) {
+
+  $("#profileSave").on("click", function(event){
     event.preventDefault();
-    var riderName = $("#riderName-input").val().trim();
+
+
+    var profileName = $("#riderName-input").val().trim();
     var riderType = $("#profileType").val();
-  
-    console.log(riderName, riderType)
-    localStorage.clear();
-
-    localStorage.setItem("name", riderName);
-    localStorage.setItem("type", riderType);
-  });
-
-  $("#riderRestrictSubmit").on("click", function(event) {
-    event.preventDefault();
     var heightRestrict = $("#heightRestrict").val();
     var physicalRestrict = $("#physicalRestrict").val();
-  
-    console.log(heightRestrict, physicalRestrict)
+    let ref= firebase.database().ref('profiles/' + uid)
+    ref.push({
+        
+      name: profileName,
+      type: riderType,
+      maxHeight: heightRestrict,
+      physicalRestrict: physicalRestrict,
+    })
 
-    localStorage.setItem("heightRestrict", heightRestrict);
-    localStorage.setItem("physicalRestrict", physicalRestrict);
   });
 
-  $("#riderFastPassSubmit").on("click", function(event) {
-    event.preventDefault();
-    var fastPassRideOne = $("#firstFPRide").val()
-    var fastPassTimeOne = $("#firstFPTime").val().trim()
-    var fastPassRideTwo = $("#secondFPRide").val()
-    var fastPassTimeTwo = $("#secondFPTime").val().trim()  
-    var fastPassRideThree = $("#thirdFPRide").val()
-    var fastPassTimeThree = $("#thirdFPTime").val().trim()
 
+  // $("#riderFastPassSubmit").on("click", function(event) {
+  //   event.preventDefault();
+  //   let ref = firebase.database().ref('fastpass/' + uid);
+  //   let fastPassRideOne = $("#firstFPRide option:selected").text();
+  // fastPassRideOne = !(fastPassRideOne) ? "none" : $("#firstFPRide option:selected").text();
+  //   let fastPassTimeOne = $("#firstFPTime").val().trim();
+    
+  //   let fastPassRideTwo = $("#secondFPRide option:selected").text();
+  // fastPassRideTwo = !(fastPassRideTwo) ? "none" : $("#secondFPRide option:selected").text();
+  //   let fastPassTimeTwo = $("#secondFPTime").val().trim();
+  //   let fastPassRideThree = $("#thirdFPRide option:selected").text() 
+  // fastPassRideThree = !(fastPassRideThree) ? "none" : $("#thirdFPRide option:selected").text() 
+  //   let fastPassTimeThree = $("#thirdFPTime").val().trim();
 
-    localStorage.setItem("FirstFastPass", fastPassRideOne);
-    localStorage.setItem("SecondFastPass", fastPassRideTwo);
-    localStorage.setItem("ThirdFastPass", fastPassRideThree);
-    localStorage.setItem("FirstFastPassTime", fastPassTimeOne);
-    localStorage.setItem("SecondFastPassTime", fastPassTimeTwo);
-    localStorage.setItem("ThirdFastPassTime", fastPassTimeThree);
-
-  })
+  //   ref.set({
+  //     fp1: fastPassRideOne,
+  //     fpTime1: fastPassTimeOne,
+  //     fp2: fastPassRideTwo,
+  //     fpTime2: fastPassTimeTwo,
+  //     fp3: fastPassRideThree,
+  //     fpTime3: fastPassTimeThree,
+  //   }).key;
+  // })
 
   $("#favoriteSubmit").on("click", function(event) {
     event.preventDefault();
+    let ref = firebase.database().ref('favorites/' + uid);
     var favOne = $("#firstFavRide").val()
+    favOne = !(favOne) ? "none" : $("#firstFavRide").val().trim();
     var favTwo = $("#secondFavRide").val()
+    favTwo = !(favTwo) ? "none" : $("#secondFavRide").val().trim();
     var favThree = $("#thirdFavRide").val()
-
-
-    localStorage.setItem("FirstFavRide", favOne);
-    localStorage.setItem("SecondFavRide", favTwo);
-    localStorage.setItem("ThirdFavRide", favThree);
-
-
+    favThree = !(favThree) ? "none" : $("#thirdFavRide").val().trim();
+    ref.set({
+      fav1: favOne,
+      fav2: favTwo,
+      fav3: favThree,
+    }).key;
   });
 
   //Sidenav Activate
@@ -143,6 +178,7 @@ $(document).ready(function(){
   $('select').formSelect();
 
 });
+
 
 
 
