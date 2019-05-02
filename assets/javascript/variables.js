@@ -170,9 +170,8 @@ if profileThrill (get from firebase) = false {
 }
 */
 
+
 /* Working if statements for height restrictions
-
-
  if (minHeight < 38) {
     frontierlandArr.splice(0,2)
     fantasylandArr.splice(0,1)
@@ -186,6 +185,7 @@ if profileThrill (get from firebase) = false {
     console.log("no restrictions :)")
 }
 */
+
 if (FantasylandArr.length = 4) {
-    console.log("this won't push without this code")
+    console.log("code so it isn't all comments and will push")
 }
