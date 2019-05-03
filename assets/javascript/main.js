@@ -1,6 +1,10 @@
 var mainApp={};
 var firebase;
 var uid;
+var profileThrill= false;
+var profileHeight= 0;
+var fpArray=[];
+var favArray=[];
 
 (function(){
   var firebase = app_fireBase;
