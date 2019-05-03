@@ -129,30 +129,30 @@ $(document).ready(function(){
 
   });
 
+  $("#riderFastPassSubmit").on("click", function(event) {
+    event.preventDefault();
+    let ref = firebase.database().ref('fastpass/' + uid);
+    let fastPassRideOne = $("#firstFPRide").val();
+    console.log(fastPassRideOne)
+    let fastPassTimeOne = $("#firstFPTimeHour").val() + ":" + $("#firstFPTimeMinute").val();
+    console.log(fastPassTimeOne)
+    let fastPassRideTwo = $("#secondFPRide").val();
+    let fastPassTimeTwo = $("#secondFPTimeHour").val() + ":" + $("#secondFPTimeMinute").val();
+    console.log(fastPassTimeTwo)
+    let fastPassRideThree = $("#thirdFPRide").val();
+    let fastPassTimeThree = $("#thirdFPTimeHour").val() + ":" + $("#thirdFPTimeMinute").val();
+    console.log(fastPassTimeThree)
 
-  // $("#riderFastPassSubmit").on("click", function(event) {
-  //   event.preventDefault();
-  //   let ref = firebase.database().ref('fastpass/' + uid);
-  //   let fastPassRideOne = $("#firstFPRide option:selected").text();
-  // fastPassRideOne = !(fastPassRideOne) ? "none" : $("#firstFPRide option:selected").text();
-  //   let fastPassTimeOne = $("#firstFPTime").val().trim();
-    
-  //   let fastPassRideTwo = $("#secondFPRide option:selected").text();
-  // fastPassRideTwo = !(fastPassRideTwo) ? "none" : $("#secondFPRide option:selected").text();
-  //   let fastPassTimeTwo = $("#secondFPTime").val().trim();
-  //   let fastPassRideThree = $("#thirdFPRide option:selected").text() 
-  // fastPassRideThree = !(fastPassRideThree) ? "none" : $("#thirdFPRide option:selected").text() 
-  //   let fastPassTimeThree = $("#thirdFPTime").val().trim();
+        ref.set({
+      fp1: fastPassRideOne,
+      fpTime1: fastPassTimeOne,
+      fp2: fastPassRideTwo,
+      fpTime2: fastPassTimeTwo,
+      fp3: fastPassRideThree,
+      fpTime3: fastPassTimeThree,
+    })
+  });
 
-  //   ref.set({
-  //     fp1: fastPassRideOne,
-  //     fpTime1: fastPassTimeOne,
-  //     fp2: fastPassRideTwo,
-  //     fpTime2: fastPassTimeTwo,
-  //     fp3: fastPassRideThree,
-  //     fpTime3: fastPassTimeThree,
-  //   }).key;
-  // })
 
   $("#favoriteSubmit").on("click", function(event) {
     event.preventDefault();
@@ -167,7 +167,7 @@ $(document).ready(function(){
       fav1: favOne,
       fav2: favTwo,
       fav3: favThree,
-    }).key;
+    })
   });
 
   //Sidenav Activate
@@ -178,6 +178,7 @@ $(document).ready(function(){
   $('select').formSelect();
 
 });
+
 
 
 
