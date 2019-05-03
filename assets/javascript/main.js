@@ -185,19 +185,19 @@ $(document).ready(function(){
 
 
 
+/*
+ This is the code to make the materialize cards, I have commented where we need info input
 
-/* This is the code to make the materialize cards, I have commented where we need info input
-
-var newDiv1= $("<div>").addClass("row")
+var newDiv1= $("<div>").addClass("row center-align")
 //need time of attraction added\/
-var newTimeP= $("<p>").addClass("col s1").text()
-var newDiv2 = $("<div>").addClass("col s11 m6")
-var newDiv3 = $("<div>").addClass("card")
+var newTimeP= $("<p>").addClass("col s2 offset-m1 offset-l2 time").text()
+var newDiv2 = $("<div>").addClass("col s9 m7 l4 center-align")
+var newDiv3 = $("<div>").addClass("card center-align")
 var newDiv4 = $("<div>").addClass("card-image")
 //need img file path\/
 var newImg = $("<img>").attr("src", "")
 //need how many minutes for attraction \/
-var newSpan = $("<span").addClass("card-title").text()
+var newSpan = $("<span").addClass("card-title").attr("id", "minutes").text()
 var newA = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light blue")
 var newI = $("<i>").addClass("material-icons right").text("cloud")
 
@@ -205,27 +205,26 @@ newA.append(newI)
 newDiv4.append(newImg, newSpan, newA)
 
 var newDiv5= $("<div>").addClass("card-content")
-var newDiv6= $("<div>").addClass("row")
-var newA2 = $("<a>").addClass("waves-effect waves-light btn-large col s2")
+var newDiv6= $("<div>").addClass("row valign-wrapper")
+var newA2 = $("<a>").addClass("waves-effect waves-light btn-large col amber accent-4 s3")
 var newI2 = $("<i>").addClass("material-icons").text("check")
 //need ride name \/
-var newP2 = $("<p>").addClass("col s10").text()
-//need ride location \/
-var newP3 = $("<p>").addClass("col s10").text()
+var newP2 = $("<p>").addClass("col s9 rideTitle").text()
+
 
 
 newA2.append(newI1)
-newDiv6.append(newA2, newP2, newP3)
+newDiv6.append(newA2, newP2)
 newDiv5.append(newDiv6)
 
 var newDiv7= $("<div>").addClass("row")
-var newA3 = $("<a>").addClass("waves-effect waves-light btn-large col s2")
-var newI3 = $("<i>").addClass("material-icons").text("clear")
+//need ride location \/
+var newP3 = $("<p>").addClass("col s12 rideLocation").attr("id", "rideLocation").text()
 //need ride description text \/
-var newP4= $("<p>").addClass("col s10").text()
+var newP4= $("<p>").addClass("col s12  rideDescription").text()
 
-newA3.append(newI3)
-newDiv7.append(newA3, newP4)
+
+newDiv7.append(newP3, newP4)
 
 
 newDiv5.append(newDiv6, newDiv7)
@@ -237,8 +236,39 @@ newDiv2.append(newDiv3)
 newDiv1.append(newTimeP, newDiv2)
 
 $("#putCardsHere").append(newDiv1)
+
 */
 
+
+
+/*html for card base
+<div class="row center-align">
+                <p class="col s2 offset-m1 offset-l2 time">9:30</p>
+                <div class="col s9 m7 l4 center-align">
+                    <div class="card center-align">
+                        <div class="card-image">
+                            <img src="assets/images/splashMountainSample.jpg">
+                            <span class="card-title" id="minutes"> 35 min</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light blue "><i
+                                    class="material-icons right">cloud</i></a>
+                        </div>
+                        <div class="card-content">
+                            <div class="row valign-wrapper ">
+                                <a class="waves-effect waves-light btn-large col amber accent-4 s3 " id="check"><i
+                                        class="material-icons">check</i></a>
+                                <p class="col s9 rideTitle">Splash Mountain</p>
+                                
+                            </div>
+                            <div class="row">
+                                    <p class="col s12 rideLocation" id="rideLocation">Ride Location</p>
+                                <p class="col s12  rideDescription">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
+                                    lalalalala lalala lalalal lalalalala lalalalala</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            */
 
 
 

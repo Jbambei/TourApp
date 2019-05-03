@@ -21,18 +21,20 @@
 <body>
     <!-- start header -->
     <header>
-
+        <div class="mobileLogo">
+            <h1 class="mobileLogoH">Park Ninja</h1>
+        </div>
         <nav>
-            <div class="nav-wrapper blue darken-4">
-                <a href="#!" class="brand-logo right bar">Park Ninja</a>
+            <div class="nav-wrapper amber accent-4">
+                <a href="#!" class="brand-logo left hide-on-med-and-down bar">Park Ninja</a>
                 <a href="#" data-target="slide-out" class="show sidenav-trigger "><i class="material-icons">menu</i></a>
-                <ul class="left hide-on-med-and-down">
+                <ul class="right hide-on-med-and-down barLi">
                     <li><a href="#profileCreate" class="modal-trigger sidenav-close ">Create Profile</a></li>
                     <li>
                         <div class="divider"></div>
                     </li>
                     
-                    <button onclick="mainApp.logOut()">logOut</button>
+                    <button id="logOut" onclick="mainApp.logOut()">Logout</button>
                 </ul>
             </div>
         </nav>
@@ -40,47 +42,47 @@
         <ul id="slide-out" class="sidenav">
             <li>
                 <div class="user-view">
-                    <div class="background">
-                        <img src="https://picsum.photos/300/200">
+                    <div class="background" id="sideNavBack">
+                        <img src="">
                     </div>
-                    <a href="#user"><img class="circle" src="https://picsum.photos/100"></a>
-                    <a href="#name"><span class="white-text name">John Doe</span></a>
-                    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                    <!--<a href="#user"><img class="circle" src="https://picsum.photos/100"></a>-->
+                    <a href="#name"><span class="white-text name" id="sideNavName">John Doe</span></a>
+                    <a href="#email"><span class="white-text email" id="sideNavEmail">jdandturk@gmail.com</span></a>
                 </div>
             </li>
-            <li><a href="#profileCreate" class="modal-trigger sidenav-close"><i class="material-icons">cloud</i>Create
-                    Profile</a></li>
+            <li><a href="#profileCreate" class="modal-trigger sidenav-close" id="sideNavSchedule"><i class="material-icons left white-text">schedule</i>Create
+                    Schedule</a></li>
             
             <li>
-                <div class="divider"></div>
+                
             </li>
             
-            <button onclick="mainApp.logOut()">logOut</button>
+            <button class="sideNavButton" onclick="mainApp.logOut()">Logout</button>
         </ul>
     </header>
     <main>
-        <div class="scheduleCardsPage">
+        <div class="scheduleCardsPage center-align needsCenter">
             
-            <div class="row">
-                <p class="col s1">9:30</p>
-                <div class="col s11 m6">
-                    <div class="card">
+            <div class="row firstCard center-align">
+                <p class="col s2 offset-m1 offset-l2 time">9:30</p>
+                <div class="col s9 m7 l4 center-align">
+                    <div class="card center-align">
                         <div class="card-image">
                             <img src="assets/images/splashMountainSample.jpg">
-                            <span class="card-title">Minutes</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light blue"><i
+                            <span class="card-title" id="minutes"> 35 min</span>
+                            <a class="btn-floating halfway-fab waves-effect waves-light blue "><i
                                     class="material-icons right">cloud</i></a>
                         </div>
                         <div class="card-content">
-                            <div class="row">
-                                <a class="waves-effect waves-light btn-large col s2"><i
+                            <div class="row valign-wrapper ">
+                                <a class="waves-effect waves-light btn-large col amber accent-4 s3 " id="check"><i
                                         class="material-icons">check</i></a>
-                                <p class="col s10">Splash Mountain</p>
-                                <p class="col s10">Ride Location</p>
+                                <p class="col s9 rideTitle">Splash Mountain</p>
+                                
                             </div>
                             <div class="row">
-                                <a class="waves-effect waves-light btn-large col s2">break</a>
-                                <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
+                                    <p class="col s12 rideLocation" id="rideLocation">Ride Location</p>
+                                <p class="col s12  rideDescription">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
                                     lalalalala lalala lalalal lalalalala lalalalala</p>
                             </div>
                         </div>
@@ -92,26 +94,25 @@
 
 
             <div class="row">
-                <p class="col s1">9:30</p>
-                <div class="col s11 m6">
-                    <div class="card">
+                <p class="col s2 offset-m1 offset-l2 time">9:30</p>
+                <div class="col s9 m7 l4">
+                    <div class="card needBorder">
                         <div class="card-image">
-                            <img src="assets/images/splashMountainSample.jpg">
-                            <span class="card-title">Minutes</span>
+                            <img src="assets/images/tomorrowland/spaceMountain.jpg">
+                            <span class="card-title" id="minutes">35 min</span>
                             <a class="btn-floating halfway-fab waves-effect waves-light blue"><i
                                     class="material-icons right">cloud</i></a>
                         </div>
                         <div class="card-content">
-                            <div class="row">
-                                <a class="waves-effect waves-light btn-large col s2"><i
+                            <div class="row valign-wrapper">
+                                <a class="waves-effect waves-light btn-large col s3 amber accent-4"><i
                                         class="material-icons">check</i></a>
-                                <p class="col s10">Splash Mountain</p>
-                                <p class="col s10">Ride Location</p>
+                                <p class="col s9 rideTitle ">Space Mountain</p>
+                                
                             </div>
                             <div class="row">
-                                <a class="waves-effect waves-light btn-large col s2"><i
-                                        class="material-icons">clear</i></a>
-                                <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
+                                    <p class="col s12 rideLocation" id="rideLocation">Ride Location</p>
+                                <p class="col s12 rideDescription">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
                                     lalalalala lalala lalalal lalalalala lalalalala</p>
                             </div>
                         </div>
@@ -124,26 +125,25 @@
 
 
             <div class="row">
-                <p class="col s1">9:30</p>
-                <div class="col s11 m6">
+                <p class="col s2 offset-m1 offset-l2 time">9:30</p>
+                <div class="col s9 m7 l4">
                     <div class="card">
                         <div class="card-image">
-                            <img src="assets/images/splashMountainSample.jpg">
-                            <span class="card-title">Minutes</span>
+                            <img src="assets/images/fantasyland/carousel.jpg">
+                            <span class="card-title" id="minutes">35min</span>
                             <a class="btn-floating halfway-fab waves-effect waves-light blue"><i
                                     class="material-icons right">cloud</i></a>
                         </div>
                         <div class="card-content">
-                            <div class="row">
-                                <a class="waves-effect waves-light btn-large col s2"><i
+                            <div class="row valign-wrapper">
+                                <a class="waves-effect waves-light btn-large col s3 amber accent-4"><i
                                         class="material-icons">check</i></a>
-                                <p class="col s10">Splash Mountain</p>
-                                <p class="col s10">Ride Location</p>
+                                <p class="col s9 rideTitle">Prince Charming's Regal Carousel</p>
+                                
                             </div>
                             <div class="row">
-                                <a class="waves-effect waves-light btn-large col s2"><i
-                                        class="material-icons">clear</i></a>
-                                <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
+                                    <p class="col s12 rideLocation" id="rideLocation">Ride Location</p>
+                                <p class="col s12 rideDescription">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
                                     lalalalala lalala lalalal lalalalala lalalalala</p>
                             </div>
                         </div>
@@ -159,14 +159,14 @@
     <div id="profileCreate" class="modal center-align">
         <div class="modal-content center-align">
             <h4 class="center-align">Create Your Profile</h4>
-            <p class="center-align">Let's start with making a profile name, and what kinds of rides you like!</p>
+            <p class="center-align" id="profileP">Let's start with making a profile name, and what kinds of rides you like!</p>
             <div class="row">
                 <form class="col s12 center-align">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 l6 offset-l3">
                         <input placeholder="i.e: with kids, with buds" id="riderName-input" type="text" class="validate col s12">
-                        <label for="riderName">Profile Name</label>
+                        <label for="riderName" id="riderName">Profile Name</label>
                     </div>
-                    <div class="input-field center-align col s12 ">
+                    <div class="input-field center-align col s12 l6 offset-l3" id="riderTypeField">
                         <select id="profileType" class="col s12">
                             <option value="" disabled selected>Select a Rider Type</option>
                             <option value="noPref">No Preference</option>
@@ -174,11 +174,11 @@
                             <option value="noThrill">No Thrill</option>
 
                         </select>
-                        <label>Your Rider Type:</label>
+                        
                     </div>
                 </form>
                 <div class="row center-align">
-                    <a href="#profileRestrict" class="waves-effect waves-green btn modal-close modal-trigger"
+                    <a href="#profileRestrict" class="waves-effect waves-green btn modal-close modal-trigger amber accent-3"
                         id="next" type="submit">Next</a>
                 </div>
             </div>
@@ -196,7 +196,7 @@
                 restrictions to exclude.</p>
         </div>
         <div class="row">
-            <form class="col s12 center-align">
+            <form class="col s12 l6 offset-l3 center-align">
                 <div class="input-field center-align col s12 ">
                     <select id="heightRestrict" class="col s12">
                         <option value="" disabled selected>Select a Height Restriction</option>
@@ -210,7 +210,7 @@
                 </div>
             </form>
             <div class="row">
-                <form class="col s12 center-align">
+                <form class="col s12 l6 offset-l3 center-align">
                     <div class="input-field center-align col s12 ">
                         <select id="physicalRestrict" class="col s12">
                             <option value="" disabled selected>Physical Restrictions</option>
@@ -220,7 +220,7 @@
                     </div>
                 </form>
             </div>
-            <a id="profileSave" href="#profileFastPass"  class="waves-effect waves-green btn modal-close modal-trigger" type="submit">Submit Profile</a>
+            <a id="profileSave" href="#profileFastPass"  class="waves-effect waves-green btn modal-close modal-trigger amber accent-3" type="submit">Submit Profile</a>
         </div>
 
         <div class="modal-footer">
@@ -234,23 +234,23 @@
             <h4 class="center-align">User FastPass</h4>
             <p class="center-align">Let's schedule your FastPasses. Check the My Disney Experience App for FastPass
                 times and to book.</p>
-            <div class="row">
+            <div class="row center-align">
                 <form class="col s12">
-                    <div class="row">
-                        <div class="input-field center-align col s8">
+                    <div class="row center-align">
+                        <div class="input-field center-align col s6 l4 offset-l3">
                             <select id="firstFPRide" class="col s8">
-                                <option value="" disabled selected>First Fastpass</option>
+                                <option value="" disabled selected>FastPass 1</option>
                             
                             </select>
                 
                         </div>
-                        <div class="input-field col s2">
+                        <div class="input-field col s2 offset-s1 l1">
                             <select id="firstFPTimeHour" class="col s8">
                                 <option value="" disabled selected>9</option>
                             
                             </select>
                         </div>
-                        <div class="input-field col s2">
+                        <div class="input-field col s3 l1">
                             <select id="firstFPTimeMinute" class="col s8">
                                 <option value="" disabled selected>00</option>
                             
@@ -258,20 +258,20 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s8">
+                        <div class="input-field center-align col s6 l4 offset-l3">
                             <select id="secondFPRide" class="col s8">
-                                <option value="" disabled selected>Second Fastpass</option>
+                                <option value="" disabled selected>FastPass 2</option>
                                 
                             </select>
                            
                         </div>
-                        <div class="input-field col s2">
+                        <div class="input-field col s2 offset-s1 l1">
                             <select id="secondFPTimeHour" class="col s8">
                                 <option value="" disabled selected>9</option>
                             
                             </select>
                         </div>
-                        <div class="input-field col s2">
+                        <div class="input-field col s3 l1">
                             <select id="secondFPTimeMinute" class="col s8">
                                 <option value="" disabled selected>00</option>
                             
@@ -279,19 +279,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s8">
+                        <div class="input-field center-align col s6 l4 offset-l3">
                             <select id="thirdFPRide" class="col s8">
-                                    <option value="" disabled selected>Third Fastpass</option>
+                                    <option value="" disabled selected>FastPass 3</option>
                             </select>
                             
                         </div>
-                        <div class="input-field col s2">
+                        <div class="input-field col s2 offset-s1 l1">
                             <select id="thirdFPTimeHour" class="col s8">
                                 <option value="" disabled selected>9</option>
                             
                             </select>
                         </div>
-                        <div class="input-field col s2">
+                        <div class="input-field col s3 l1">
                             <select id="thirdFPTimeMinute" class="col s8">
                                 <option value="" disabled selected>00</option>
                             
@@ -300,16 +300,16 @@
                     </div>
 
                 </form>
-                <a href="#profileFavorites" class="center-align waves-effect waves-green btn modal-close modal-trigger"
+                <a href="#profileFavorites" class="center-align waves-effect waves-green btn modal-close modal-trigger amber accent-3"
                     id="riderFastPassSubmit" type="submit">Submit</a>
 
             </div>
 
             <div class="modal-footer">
                 <a href="#profileRestrict"
-                    class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close">Back</a>
+                    class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close col s2 offset-s6">Back</a>
                 <a href="#profileFavorites"
-                    class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close">Skip This Step</a>
+                    class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close col s3">Skip This Step</a>
             </div>
         </div>
     </div>
@@ -319,12 +319,12 @@
             <h4 class="center-align">User Favorite</h4>
             <p class="center-align">Let's schedule your FastPasses. Check the My Disney Experience App for FastPass
                 times and to book.</p>
-            <div class="row">
+            <div class="row center-align">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field center-align col s12">
+                        <div class="input-field center-align col s12 l6 offset-l3">
                             <select id="firstFavRide" class="col s12">
-                                <option value="" disabled selected>Your First Favorite Ride</option>
+                                <option value="" disabled selected>First Favorite Ride</option>
                      
                             </select>
                            
@@ -332,29 +332,29 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-field center-align col s12">
+                        <div class="input-field center-align col s12 l6 offset-l3">
                             <select id="secondFavRide" class="col s12">
-                                    <option value="" disabled selected>Your Second Favorite Ride</option>
+                                    <option value="" disabled selected>Second Favorite Ride</option>
                             </select>
                          
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field center-align col s12">
+                        <div class="input-field center-align col s12 l6 offset-l3">
                             <select id="thirdFavRide" class="col s12">
-                                    <option value="" disabled selected>Your Third Favorite Ride</option>
+                                    <option value="" disabled selected>Third Favorite Ride</option>
                             </select>
                            
                         </div>
                     </div>
                 </form>
-                <a class="center-align waves-effect waves-green btn modal-close" id="favoriteSubmit" type="submit">Submit</a>
+                <a class="center-align waves-effect waves-green btn modal-close amber accent-3" id="favoriteSubmit" type="submit">Submit</a>
             </div>
 
 
             <div class="modal-footer">
                 <a href="#profileFastPass"
-                    class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close">Back</a>
+                    class="modal-close waves-effect waves-green btn-flat modal-trigger modal-close ">Back</a>
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat modal-close">Skip This Step</a>
             </div>
         </div>
