@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Tour App Yo</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <!--Firebase-->
 
-    <link rel="stylesheet" href="" type="text/css/reset.css">
+    <link rel="stylesheet" href="text/css/reset.css" type="text/css">
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,16 +23,15 @@
     <header>
 
         <nav>
-            <div class="nav-wrapper blue">
-                <a href="#!" class="brand-logo right">Logo</a>
-                <a href="#" data-target="slide-out" class="show sidenav-trigger"><i class="material-icons">menu</i></a>
+            <div class="nav-wrapper blue darken-4">
+                <a href="#!" class="brand-logo right bar">Park Ninja</a>
+                <a href="#" data-target="slide-out" class="show sidenav-trigger "><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
-                    <li><a href="#profileCreate" class="modal-trigger sidenav-close">Create Profile</a></li>
-                    <li><a href="#!">Add Break</a></li>
+                    <li><a href="#profileCreate" class="modal-trigger sidenav-close ">Create Profile</a></li>
                     <li>
                         <div class="divider"></div>
                     </li>
-                    <li><a class="waves-effect" href="#!">New Schedule</a></li>
+                    
                     <button onclick="mainApp.logOut()">logOut</button>
                 </ul>
             </div>
@@ -51,31 +50,17 @@
             </li>
             <li><a href="#profileCreate" class="modal-trigger sidenav-close"><i class="material-icons">cloud</i>Create
                     Profile</a></li>
-            <li><a href="#!">Add Break</a></li>
+            
             <li>
                 <div class="divider"></div>
             </li>
-            <li><a class="waves-effect" href="#!">New Schedule</a></li>
+            
             <button onclick="mainApp.logOut()">logOut</button>
         </ul>
     </header>
     <main>
         <div class="scheduleCardsPage">
-            <div class="center-align">
-                <div class="input-field col s12">
-                    <select>
-                        <option value="" disabled selected>Pick</option>
-                        <option value="1">Fantasy Land</option>
-                        <option value="2">Adventure Land</option>
-                        <option value="3">Frontier Land</option>
-                        <option value="4">Liberty Square</option>
-                        <option value="5">Tommorrow Land</option>
-                    </select>
-                    <label>Current Location</label>
-                </div>
-            </div>
-
-
+            
             <div class="row">
                 <p class="col s1">9:30</p>
                 <div class="col s11 m6">
@@ -94,8 +79,7 @@
                                 <p class="col s10">Ride Location</p>
                             </div>
                             <div class="row">
-                                <a class="waves-effect waves-light btn-large col s2"><i
-                                        class="material-icons">clear</i></a>
+                                <a class="waves-effect waves-light btn-large col s2">break</a>
                                 <p class="col s10">Ride Description: Lalalalalalalalalalala Lalalalalalalalalalala
                                     lalalalala lalala lalalal lalalalala lalalalala</p>
                             </div>
@@ -216,8 +200,7 @@
                 <div class="input-field center-align col s12 ">
                     <select id="heightRestrict" class="col s12">
                         <option value="" disabled selected>Select a Height Restriction</option>
-                        <option value="1">No height restrictions</option>
-                        <option value="48">Show only rides below 48"</option>
+                        <option value="99">No height restrictions</option>
                         <option value="44">Show only rides below 44"</option>
                         <option value="40">Show only rides below 40"</option>
                         <option value="38">Show only rides below 38"</option>
