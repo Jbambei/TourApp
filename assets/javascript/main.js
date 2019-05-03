@@ -41,6 +41,446 @@ var uid;
   mainApp.logOut = logOut;
 })()
 
+
+var allRides = [{
+  name: "Splash Mountain",
+  height: "40",
+  thrill: true,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Frontierland",
+  priority: 5,
+  minutesMorning: 35,
+  minutesPeak: 50,
+  walking: 10,
+  duration: 18,
+  done: false
+},
+{
+  name: "Thunder Mountain",
+  height: "40",
+  thrill: true,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Frontier",
+  priority: 5,
+  minutesMorning: 25,
+  minutesPeak: 50,
+  walking: 10,
+  duration: 7,
+  done: false
+},
+{
+  name: "Tom Sawyer's Island",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Frontier",
+  priority: 1,
+  minutesMorning: 10,
+  minutesPeak: 10,
+  walking: 10,
+  duration: 30,
+  done: false
+},
+
+{
+  name: "Pirates of the Caribbean",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Adventureland",
+  priority: 5,
+  minutesMorning: 17,
+  minutesPeak: 51,
+  walking: 10,
+  duration: 7.5,
+  done: false
+},
+{
+  name: "Jungle Cruise",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Adventureland",
+  priority: 4,
+  minutesMorning: 20,
+  minutesPeak: 35,
+  walking: 10,
+  duration: 8,
+  done: false
+},
+{
+  name: "The Magic Carpets of Aladdin",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Adventureland",
+  priority: 3,
+  minutesMorning: 16,
+  minutesPeak: 25,
+  walking: 10,
+  duration: 1.5,
+  done: false
+},
+{
+  name: "Swiss Family Robinson Treehouse",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Adventureland",
+  priority: 2,
+  minutesMorning: 10,
+  minutesPeak: 10,
+  walking: 10,
+  duration: 30,
+  done: false
+},
+{
+  name: "Walt Disney's Enchanted Tiki Room",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Adventureland",
+  priority: 1,
+  minutesMorning: 10,
+  minutesPeak: 10,
+  walking: 10,
+  duration: 15.5,
+  done: false
+},
+
+{
+  name: "Country Bears' Jamboree",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Frontier",
+  height: 40,
+  priority: 1,
+  minutesMorning: 16,
+  minutesPeak: 16,
+  walking: 10,
+  duration: 10,
+  done: false
+},
+
+{
+  name: "The Haunted Mansion",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Liberty Square",
+  priority: 4,
+  minutesMorning: 22,
+  minutesPeak: 30,
+  walking: 10,
+  duration: 10,
+  done: false
+},
+{
+  name: "The Hall of Presidents",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Liberty Square",
+  priority: 1,
+  minutesMorning: 25,
+  minutesPeak: 25,
+  walking: 10,
+  duration: 23,
+  done: false
+},
+{
+  name: "Seven Dwarves Mine Train",
+  height: "38",
+  thrill: true,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 5,
+  minutesMorning: 45,
+  minutesPeak: 75,
+  walking: 10,
+  duration: 3,
+  done: false
+},
+{
+  name: "Peter Pan's Flight",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 5,
+  minutesMorning: 45,
+  minutesPeak: 60,
+  walking: 10,
+  duration: 3,
+  done:false
+},
+{
+  name: "The Many Adventure of Winnie the Pooh",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 3,
+  minutesMorning: 20,
+  minutesPeak: 30,
+  walking: 10,
+  duration: 4,
+  done:false
+},
+{
+  name: "It's a Small World",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 3,
+  minutesMorning: 12,
+  minutesPeak: 25,
+  walking: 10,
+  duration: 14,
+  done: false
+},
+{
+  name: "Barnstormer",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 3,
+  minutesMorning: 10,
+  minutesPeak: 25,
+  walking: 10,
+  duration: 2,
+  done: false
+},
+{
+  name: "Dumbo",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 3,
+  minutesMorning: 15,
+  minutesPeak: 25,
+  walking: 10,
+  duration: 1.5,
+  done: false
+},
+{
+  name: "Mad Tea Party",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 2,
+  minutesMorning: 8,
+  minutesPeak: 16,
+  walking: 10,
+  duration: 1.5,
+  done: false
+},
+{
+  name: "Under the Sea",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 2,
+  minutesMorning: 10,
+  minutesPeak: 25,
+  walking: 10,
+  duration: 7,
+  done: false
+},
+{
+  name: "Prince Charming's Regal Carousel",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Fantasyland",
+  priority: 1,
+  minutesMorning: 5,
+  minutesPeak: 15,
+  walking: 10,
+  duration: 2,
+  done: false
+},
+
+{
+  name: "Space Mountain",
+  height: "44",
+  thrill: true,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Tomorrowland",
+  priority: 5,
+  minutesMorning: 30,
+  minutesPeak: 55,
+  walking: 10,
+  duration: 10,
+  done: false
+},
+{
+  name: "Buzz Lightyear's Space Ranger Spin",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Tomorrowland",
+  priority: 4,
+  minutesMorning: 20,
+  minutesPeak: 30,
+  walking: 10,
+  duration: 4.5,
+  done: false
+},
+{
+  name: "Astro Orbiter",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Tomorrowland",
+  priority: 3,
+  minutesMorning: 22,
+  minutesPeak: 30,
+  walking: 10,
+  duration: 1.5,
+  done: false
+},
+{
+  name: "Transit Authority Peoplemover",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Tomorrowland",
+  priority: 2,
+  minutesMorning: 8,
+  minutesPeak: 11,
+  walking: 10,
+  duration: 10,
+  done: false
+},
+{
+  name: "Walt Disney's Carousel of Progress",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Tomorrowland",
+  priority: 1,
+  minutesMorning: 10,
+  minutesPeak: 10,
+  walking: 10,
+  duration: 21,
+  done: false
+}
+]
+
+//ALL PARTS OF GENSCHEDULE
+
+/* genschedule()
+Set FPs to true
+loop through the array and any FP that are true, then set their time to whatever FP time we got from the frontend
+cut out any rides that they can't go on
+cut out any rides they won't go on
+calc the amount of time until now from the next fastpass (in minutes)
+loop through the master array, pushing each entry to firebase if they have time (total time left-totalride time)
+*/
+
+//cuts out rides they can't go on
+/* PULL HEIGHT FROM FIREBASE, SET TO A VARIABLE
+
+if (minHeight < 38) {
+    allRides.splice(index,1)
+    allRides.splice(index,1)
+    allRides.splice(index,1)
+    allRides.splice(index,1)
+} else if (minHeight < 40) {
+    allRides.splice(0,1)
+    allRides.splice(0,2)
+} else if (minheight < 44) {
+    allRides.splice(0,1)
+} else {
+    console.log("no restrictions :)")
+}
+
+
+
+//cuts out rides for non-thrill riders
+/*
+if profileThrill (get from firebase) = false {
+     allRides.splice(0,2)
+     allRides.splice(9,1)
+     allrides.splice(17,1)
+}
+*/
+
+/*
+function addRide(ride,fastpass,favorite,duration,currentTime)
+let ref= firebase.database().ref('schedule/' + uid)
+ref.push({
+    
+  ride: rideName,
+  fastpass: fastpass,
+  favorite: favorite,
+  totalRideTime: totalRideTime,
+  currentTime: currentTime
+})
+*/
+
+
+
+
+
+
 /*
 
 var rides= ["astro-orbiter","barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree","dumbo-the-flying-elephant","hall-of-presidents", "haunted-mansion","its-a-small-world", "jungle-cruise","mad-tea-party","magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean","prince-charming-regal-carrousel", "seven-dwarfs-mine-train","space-mountain", "splash-mountain","tomorrowland-speedway","tomorrowland-transit-authority-peoplemover", "under-the-sea","walt-disneys-carousel-of-progress", "enchanted-tiki-room"]

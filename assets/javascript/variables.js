@@ -2,7 +2,7 @@
 //height is in inches
 //updated 
 
-var AdventurelandArr = [
+var adventurelandArr = [
     {
         name: "Pirates",
         height: "any",
@@ -39,7 +39,7 @@ var AdventurelandArr = [
         favorite: false
     },
     {
-        name: "movetofrontierland",
+        name: "moveToFrontierland",
         height: "error if shown to user",
         thrill: "error if shown to user"
     }
@@ -75,7 +75,7 @@ var frontierlandArr = [
             favorite: false
         },
         {
-            name: "movetolibertyland",
+            name: "moveToLibertyland",
             height: "error if shown to user",
             thrill: "error if shown to user"
         }
@@ -97,7 +97,7 @@ var LibertylandArr = [
         favorite: false
     },
     {
-        name: "movetofantasyland",
+        name: "moveToFantasyland",
         height: "error if shown to user",
         thrill: "error if shown to user"
     }
@@ -168,7 +168,7 @@ var FantasylandArr = [
         favorite: false
     },
     {
-        name: "movetotomorrowland",
+        name: "moveToTomorrowland",
         height: "error if shown to user",
         thrill: "error if shown to user"
     }
@@ -210,11 +210,12 @@ var TomorrowlandArr = [
         favorite: false
     },
     {
-        name: "movetoadventureland",
+        name: "moveToAdventureland",
         height: "error if shown to user",
         thrill: "error if shown to user"
     }
 ]
+
 
 
 // to modify arrays: 
