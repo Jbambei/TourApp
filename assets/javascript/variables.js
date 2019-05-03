@@ -6,27 +6,37 @@ var AdventurelandArr = [
     {
         name: "Pirates",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "JungleCruise",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Aladdin",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Treehouse",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Tiki Hut",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
+    },
+    {
+        name: "moveRide",
+        height: "error if shown to user",
+        thrill: "error if shown to user"
     }
 ]
 
@@ -34,22 +44,26 @@ var frontierlandArr = [
         {
             name: "Splash Mountain",
             height: 40,
-            thrill: true
+            thrill: true,
+            fastpass: false
         },
         {
             name: "Thunder Mountain",
             height: 40,
-            thrill: true
+            thrill: true,
+            fastpass: false
         },
         {
             name: "Tom Sawyer", 
             height: "any",
-            thrill: false
+            thrill: false,
+            fastpass: false
         },
         {
             name: "Country Bears",
             height: "any",
-            thrill: false
+            thrill: false,
+            fastpass: false
         }
 ]
 
@@ -57,12 +71,14 @@ var LibertylandArr = [
     {
         name: "Haunted Mansion",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Hall of Presidents",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     }
 ]
 
@@ -70,74 +86,88 @@ var FantasylandArr = [
     {
         name: "Seven Dwarves",
         height: 38,
-        thrill: true
+        thrill: true,
+        fastpass: false
     },
     {
         name: "Pan",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Pooh",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Small World",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Barnstormer",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Dumbo",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Tea Cups",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Mermaid",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Prince Charming Carousel",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     }
 ]
 var TomorrowlandArr = [
     {
         name: "Space Mountain",
         height: "44",
-        thrill: true
+        thrill: true,
+        fastpass: false
     },
     {
         name: "Buzz",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Astro Orbiter",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Peoplemover",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     },
     {
         name: "Carousel of Progress",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false
     }
 ]
 
@@ -186,6 +216,8 @@ if profileThrill (get from firebase) = false {
 }
 */
 
-if (FantasylandArr.length = 4) {
-    console.log("code so it isn't all comments and will push")
-}
+
+
+
+// function for moving lands. Will need a currentRide variable that is assigned to the name of the ride in the array. When current ride
+
