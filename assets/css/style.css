@@ -42,7 +42,7 @@ header{
 }
 
 .needBorder{
-    border:#ffc400 10px solid;
+    border:#ffab00 10px solid;
 }
 
 #minutes{
@@ -90,7 +90,7 @@ header{
 }
 
 #sideNavSchedule{
-    background-color:#ffc400;
+    background-color:#ffab00;
     color: white;
     font-size:18px;
     font-weight: bold;
@@ -182,7 +182,7 @@ label{
 }
 
 #firebaseui-auth-container{
-    border:#ffc400 10px solid;
+    border:#ffab00 10px solid;
     background-color: white;
     width: 382px;
     margin: 0 auto;
@@ -246,7 +246,7 @@ body{
     color: 
     white;
     background-color: 
-    #fec901;
+    #ffab00;
 }
 
 .centerIt{
