@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+<body>
+<p>hello world</p>    
+
+<script>
+
+var AdventurelandArr = [
+    {
+        name: "Pirates",
+        height: "any",
+        thrill: false,
+    },
+    {
+        name: "JungleCruise",
+        height: "any",
+        thrill: false
+    },
+    {
+        name: "Aladdin",
+        height: "any",
+        thrill: false
+    },
+    {
+        name: "Treehouse",
+        height: "any",
+        thrill: false
+    },
+    {
+        name: "Tiki Hut",
+        height: "any",
+        thrill: false
+    },
+    {
+        name: "moveToFrontierland",
+        height: "error if shown to user",
+        thrill: "error if shown to user"
+    }
+]
+console.log(AdventurelandArr)
+console.log(AdventurelandArr[1])
+console.log(AdventurelandArr[1].name)
+
+//function to run before we start filling locally to pull out FP rides. Not sure what the syntax error is
+function spliceFastpass() {
+for (let i = 0; i < currentArray.length; i++) {
+    if (currentArray[i].fastpass = true) {
+        currentArray.splice(i,1)
+        }
+    //insert moving land logic here to make sure all arrays are looped through
+    }
+}
+
+
+// function for moving lands. Set a variable assigned to the ride name in the genschedule function (which this will be nested in), and a variable for which array we're in. When that variable = moveX, it will then start looping through the next land
+
+var currentArray = "adventurelandArr" //these will be global or at the top of the genschedule function for scope reasons
+var currentride
+
+function moveLand() {
+    if (currentArray[i].name = "moveToFrontierland") {
+        //start looping through next array
+        for (let index = 0; index < frontierland.length; index++) {  
+            //loop through frontierland
+        }
+    }
+    if (currentArray[i].name = "moveToLibertyland") {
+        for (let index = 0; index < liberyland.length; index++) {  
+            //loop through libertyland
+        }
+    }
+}
+
+
+// Should I be pushing everything to one master array that then will be sent to firebase as a whole or push as I go?
+</script>
+</body>
+</head>

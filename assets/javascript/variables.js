@@ -6,27 +6,42 @@ var AdventurelandArr = [
     {
         name: "Pirates",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "JungleCruise",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Aladdin",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Treehouse",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Tiki Hut",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
+    },
+    {
+        name: "movetofrontierland",
+        height: "error if shown to user",
+        thrill: "error if shown to user"
     }
 ]
 
@@ -34,22 +49,35 @@ var frontierlandArr = [
         {
             name: "Splash Mountain",
             height: 40,
-            thrill: true
+            thrill: true,
+            fastpass: false,
+            favorite: false
         },
         {
             name: "Thunder Mountain",
             height: 40,
-            thrill: true
+            thrill: true,
+            fastpass: false,
+            favorite: false
         },
         {
             name: "Tom Sawyer", 
             height: "any",
-            thrill: false
+            thrill: false,
+            fastpass: false,
+            favorite: false
         },
         {
             name: "Country Bears",
             height: "any",
-            thrill: false
+            thrill: false,
+            fastpass: false,
+            favorite: false
+        },
+        {
+            name: "movetolibertyland",
+            height: "error if shown to user",
+            thrill: "error if shown to user"
         }
 ]
 
@@ -57,12 +85,21 @@ var LibertylandArr = [
     {
         name: "Haunted Mansion",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Hall of Presidents",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
+    },
+    {
+        name: "movetofantasyland",
+        height: "error if shown to user",
+        thrill: "error if shown to user"
     }
 ]
 
@@ -70,74 +107,112 @@ var FantasylandArr = [
     {
         name: "Seven Dwarves",
         height: 38,
-        thrill: true
+        thrill: true,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Pan",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Pooh",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Small World",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Barnstormer",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Dumbo",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Tea Cups",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Mermaid",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Prince Charming Carousel",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
+    },
+    {
+        name: "movetotomorrowland",
+        height: "error if shown to user",
+        thrill: "error if shown to user"
     }
 ]
 var TomorrowlandArr = [
     {
         name: "Space Mountain",
         height: "44",
-        thrill: true
+        thrill: true,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Buzz",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Astro Orbiter",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Peoplemover",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
     },
     {
         name: "Carousel of Progress",
         height: "any",
-        thrill: false
+        thrill: false,
+        fastpass: false,
+        favorite: false
+    },
+    {
+        name: "movetoadventureland",
+        height: "error if shown to user",
+        thrill: "error if shown to user"
     }
 ]
 
@@ -186,6 +261,4 @@ if profileThrill (get from firebase) = false {
 }
 */
 
-if (FantasylandArr.length = 4) {
-    console.log("code so it isn't all comments and will push")
-}
+
