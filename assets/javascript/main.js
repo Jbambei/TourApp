@@ -472,7 +472,7 @@ function addRide(ride,fastpass,favorite,duration,currentTime)
 let ref= firebase.database().ref('schedule/' + uid)
 ref.push({
     
-  ride: rideName,
+  ride: ride,
   fastpass: fastpass,
   favorite: favorite,
   totalRideTime: totalRideTime,
