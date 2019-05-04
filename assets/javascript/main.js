@@ -1,45 +1,66 @@
-var mainApp={};
+var mainApp = {};
 var firebase;
 var uid;
-var profileThrill= false;
-var profileHeight= 0;
-var fpArray=[];
-var favArray=[];
+var profileThrill;
+var fphours1;
+var fpminutes1;
+var fphours2;
+var fpminutes2;
+var fphours3;
+var fpminutes3;
+var profileHeight = 0;
+var fpArray = [];
+var favArray = [];
+var firstFastPass;
+var secondFastPass;
+var thirdFastPass;
+var firstFastPassTime;
+var secondFastPassTime;
+var thirdFastPassTime;
 
-(function(){
+(function () {
   var firebase = app_fireBase;
-  
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        var user = firebase.auth().currentUser;
-         uid = user.uid;
-        $(".name").text(user.displayName);
-        $(".email").text(user.email);
-        // this sets their username and email into the sidenav pulled from firebase
-        firebase.database().ref('users/' + uid).set({
-          username: user.displayName,
-          email: user.email
-        });
-        // this is the example for pulling data from firebase
-        firebase.database().ref('fastpass/' + uid).on('value', function(snapshot){ 
-          console.log(snapshot.val().fp1)
-        });
+
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      var user = firebase.auth().currentUser;
+      uid = user.uid;
+      $(".name").text(user.displayName);
+      $(".email").text(user.email);
+      // this sets their username and email into the sidenav pulled from firebase
+      firebase.database().ref('users/' + uid).set({
+        username: user.displayName,
+        email: user.email
+      });
+      // this is the example for pulling data from firebase
+      firebase.database().ref('fastpass/' + uid).on('value', function (snapshot) {
+        firstFastPass = (snapshot.val().fp1)
+        secondFastPass = (snapshot.val().fp2)
+        thirdFastPass = (snapshot.val().fp3)
+        firstFastPassTime = (snapshot.val().fpTime1)
+        secondFastPassTime = (snapshot.val().fpTime2)
+        thirdFastPassTime = (snapshot.val().fpTime3)
+      });
+
+      firebase.database().ref('profiles/' + uid).on('value', function (snapshot) {
+        profileThrill = (snapshot.val().type)
+        physicalRestrict = (snapshot.val().physicalRestrict)
+      });
 
 
 
-      
 
-        // User is signed in.
-        //capturing user id on login
-        console.log(user)
-      }else{
-        //redirect to login page
-        uid = null;
-        window.location.replace("././login.html");
+      // User is signed in.
+      //capturing user id on login
+      console.log(user)
+    } else {
+      //redirect to login page
+      uid = null;
+      window.location.replace("././login.html");
     }
-});
+  });
 
-  function logOut(){
+  function logOut() {
     firebase.auth().signOut();
   }
   mainApp.logOut = logOut;
@@ -59,22 +80,24 @@ var allRides = [{
   minutesPeak: 50,
   walking: 10,
   duration: 18,
-  done: false
+  done: false,
+  imageSource: "assets/images/frontierland/splashmountain.jpg"
 },
 {
-  name: "Thunder Mountain",
+  name: "Big Thunder Mountain Railroad",
   height: "40",
   thrill: true,
   fastpass: false,
   fastPassTime: null,
   favorite: false,
-  land: "Frontier",
+  land: "Frontierland",
   priority: 5,
   minutesMorning: 25,
   minutesPeak: 50,
   walking: 10,
   duration: 7,
-  done: false
+  done: false,
+  imageSource: "assets/images/frontierland/bigThunder.jpg"
 },
 {
   name: "Tom Sawyer's Island",
@@ -83,13 +106,31 @@ var allRides = [{
   fastpass: false,
   fastPassTime: null,
   favorite: false,
-  land: "Frontier",
+  land: "Frontierland",
   priority: 1,
   minutesMorning: 10,
   minutesPeak: 10,
   walking: 10,
   duration: 30,
-  done: false
+  done: false,
+  imageSource: "assets/images/frontierland/tomSawyer.jpg"
+},
+{
+  name: "Country Bears' Jamboree",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Frontierland",
+  height: 40,
+  priority: 1,
+  minutesMorning: 16,
+  minutesPeak: 16,
+  walking: 10,
+  duration: 10,
+  done: false,
+  imageSource: "assets/images/frontierland/countryBears.jpg"
 },
 
 {
@@ -105,7 +146,8 @@ var allRides = [{
   minutesPeak: 51,
   walking: 10,
   duration: 7.5,
-  done: false
+  done: false,
+  imageSource: "assets/images/adventureland/pirates.jpg"
 },
 {
   name: "Jungle Cruise",
@@ -120,7 +162,8 @@ var allRides = [{
   minutesPeak: 35,
   walking: 10,
   duration: 8,
-  done: false
+  done: false,
+  imageSource: "assets/images/adventureland/jungleCruise.jpg"
 },
 {
   name: "The Magic Carpets of Aladdin",
@@ -135,7 +178,8 @@ var allRides = [{
   minutesPeak: 25,
   walking: 10,
   duration: 1.5,
-  done: false
+  done: false,
+  imageSource: "assets/images/adventureland/aladdin.jpg"
 },
 {
   name: "Swiss Family Robinson Treehouse",
@@ -150,7 +194,8 @@ var allRides = [{
   minutesPeak: 10,
   walking: 10,
   duration: 30,
-  done: false
+  done: false,
+  imageSource: "assets/images/adventureland/swissfamily.jpg"
 },
 {
   name: "Walt Disney's Enchanted Tiki Room",
@@ -165,26 +210,9 @@ var allRides = [{
   minutesPeak: 10,
   walking: 10,
   duration: 15.5,
-  done: false
+  done: false,
+  imageSource: "assets/images/adventureland/tiki.jpg"
 },
-
-{
-  name: "Country Bears' Jamboree",
-  height: "any",
-  thrill: false,
-  fastpass: false,
-  fastPassTime: null,
-  favorite: false,
-  land: "Frontier",
-  height: 40,
-  priority: 1,
-  minutesMorning: 16,
-  minutesPeak: 16,
-  walking: 10,
-  duration: 10,
-  done: false
-},
-
 {
   name: "The Haunted Mansion",
   height: "any",
@@ -198,7 +226,8 @@ var allRides = [{
   minutesPeak: 30,
   walking: 10,
   duration: 10,
-  done: false
+  done: false,
+  imageSource: "assets/images/libertySquare/hauntedMansion.jpg"
 },
 {
   name: "The Hall of Presidents",
@@ -213,7 +242,8 @@ var allRides = [{
   minutesPeak: 25,
   walking: 10,
   duration: 23,
-  done: false
+  done: false,
+  imageSource: "assets/images/libertySquare/hallOfPresidents.jpg"
 },
 {
   name: "Seven Dwarves Mine Train",
@@ -228,7 +258,8 @@ var allRides = [{
   minutesPeak: 75,
   walking: 10,
   duration: 3,
-  done: false
+  done: false,
+  imageSource: "assets/images/fantasyland/dwarvesTrain.jpg"
 },
 {
   name: "Peter Pan's Flight",
@@ -243,7 +274,8 @@ var allRides = [{
   minutesPeak: 60,
   walking: 10,
   duration: 3,
-  done:false
+  done: false,
+  imageSource: "assets/images/fantasyland/peterPan.jpg"
 },
 {
   name: "The Many Adventure of Winnie the Pooh",
@@ -258,7 +290,8 @@ var allRides = [{
   minutesPeak: 30,
   walking: 10,
   duration: 4,
-  done:false
+  done: false,
+  imageSource: "assets/images/fantasyland/pooh.jpg"
 },
 {
   name: "It's a Small World",
@@ -273,7 +306,8 @@ var allRides = [{
   minutesPeak: 25,
   walking: 10,
   duration: 14,
-  done: false
+  done: false,
+  imageSource: "assets/images/fantasyland/smallWorld.jpg"
 },
 {
   name: "Barnstormer",
@@ -288,7 +322,8 @@ var allRides = [{
   minutesPeak: 25,
   walking: 10,
   duration: 2,
-  done: false
+  done: false,
+  imageSource: "assets/images/fantasyland/barnstormer.webp"
 },
 {
   name: "Dumbo",
@@ -303,7 +338,8 @@ var allRides = [{
   minutesPeak: 25,
   walking: 10,
   duration: 1.5,
-  done: false
+  done: false,
+  imageSource: "assets/images/fantasyland/dumbo.jpg"
 },
 {
   name: "Mad Tea Party",
@@ -318,7 +354,8 @@ var allRides = [{
   minutesPeak: 16,
   walking: 10,
   duration: 1.5,
-  done: false
+  done: false,
+  imageSource: "assets/images/fantasyland/teaParty.jpg"
 },
 {
   name: "Under the Sea",
@@ -333,7 +370,9 @@ var allRides = [{
   minutesPeak: 25,
   walking: 10,
   duration: 7,
-  done: false
+  done: false,
+  imageSource: "assets/images/fantasyland/mermaid.jpg"
+
 },
 {
   name: "Prince Charming's Regal Carousel",
@@ -348,7 +387,8 @@ var allRides = [{
   minutesPeak: 15,
   walking: 10,
   duration: 2,
-  done: false
+  done: false,
+  imageSource: "assets/images/fantasyland/carousel.jpg"
 },
 
 {
@@ -364,7 +404,8 @@ var allRides = [{
   minutesPeak: 55,
   walking: 10,
   duration: 10,
-  done: false
+  done: false,
+  imageSource: "assets/images/tomorrowland/spaceMountain.jpg"
 },
 {
   name: "Buzz Lightyear's Space Ranger Spin",
@@ -379,7 +420,8 @@ var allRides = [{
   minutesPeak: 30,
   walking: 10,
   duration: 4.5,
-  done: false
+  done: false,
+  imageSource: "assets/images/tomorrowland/buzz.jpg"
 },
 {
   name: "Astro Orbiter",
@@ -394,7 +436,8 @@ var allRides = [{
   minutesPeak: 30,
   walking: 10,
   duration: 1.5,
-  done: false
+  done: false,
+  imageSource: "assets/images/tomorrowland/astroOrbiter.jpg"
 },
 {
   name: "Transit Authority Peoplemover",
@@ -409,7 +452,8 @@ var allRides = [{
   minutesPeak: 11,
   walking: 10,
   duration: 10,
-  done: false
+  done: false,
+  imageSource: "assets/images/tomorrowland/peopleMover.jpg"
 },
 {
   name: "Walt Disney's Carousel of Progress",
@@ -424,11 +468,10 @@ var allRides = [{
   minutesPeak: 10,
   walking: 10,
   duration: 21,
-  done: false
+  done: false,
+  imageSource: "assets/images/tomorrowland/carouselProgress.jpg"
 }
-]
-
-//ALL PARTS OF GENSCHEDULE
+]//ALL PARTS OF GENSCHEDULE
 
 /* genschedule()
 Set FPs to true
@@ -509,17 +552,16 @@ $.ajax({
 
 */
 
- 
 
-var rideNames=  ["Astro Orbiter","Barnstormer","Big Thunder Mountain Railroad","Buzz LightYear's Space Ranger Spin","Country Bears' Jamboree","Dumbo","The Hall of Presidents","The Haunted Mansion","'It's a small world'","Jungle Cruise","Mad Tea Party","The Magic Carpets of Aladdin" ,"The Many Adventures of Winnie the Pooh","Peter Pan's Flight","Pirate's of the Caribbean", "Prince Charming's Regal Carousel","Seven Dwarves Mine Train","Space Mountain","Splash Mountain","Swiss Family Robinson Tree House","Tom Sawyer's Island","Transit Authority PeopleMover","Under the Sea","Walt Disney's Carousel of Progress" ,"Walt Disney's Enchanted Tiki Room"]
-for (var i=0; i < rideNames.length; i++){
-  console.log(rideNames[i])
-  var newOption= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
-  var newOption2= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
-  var newOption3= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
-  var newOption4= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
-  var newOption5= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
-  var newOption6= $("<option>").attr("value", (rideNames[i])).text(rideNames[i])
+
+var rideNames = ["Astro Orbiter", "Barnstormer", "Big Thunder Mountain Railroad", "Buzz LightYear's Space Ranger Spin", "Country Bears' Jamboree", "Dumbo", "The Hall of Presidents", "The Haunted Mansion", "'It's a small world'", "Jungle Cruise", "Mad Tea Party", "The Magic Carpets of Aladdin", "The Many Adventures of Winnie the Pooh", "Peter Pan's Flight", "Pirate's of the Caribbean", "Prince Charming's Regal Carousel", "Seven Dwarves Mine Train", "Space Mountain", "Splash Mountain", "Swiss Family Robinson Tree House", "Tom Sawyer's Island", "Transit Authority PeopleMover", "Under the Sea", "Walt Disney's Carousel of Progress", "Walt Disney's Enchanted Tiki Room"]
+for (var i = 0; i < allRides.length; i++) {
+  var newOption = $("<option>").attr("value", (allRides[i].name)).text(allRides[i].name)
+  var newOption2 = $("<option>").attr("value", (allRides[i].name)).text(allRides[i].name)
+  var newOption3 = $("<option>").attr("value", (allRides[i].name)).text(allRides[i].name)
+  var newOption4 = $("<option>").attr("value", (allRides[i].name)).text(allRides[i].name)
+  var newOption5 = $("<option>").attr("value", (allRides[i].name)).text(allRides[i].name)
+  var newOption6 = $("<option>").attr("value", (allRides[i].name)).text(allRides[i].name)
   $("#firstFPRide").append(newOption)
   $("#secondFPRide").append(newOption2)
   $("#thirdFPRide").append(newOption3)
@@ -530,31 +572,32 @@ for (var i=0; i < rideNames.length; i++){
 
 }
 
-for (var i=1; i < 13; i++){
-  console.log(i)
-   var hourOption= $("<option>").attr("value", ([i])).text([i])
-   var hourOption2= $("<option>").attr("value", ([i])).text([i])
-   var hourOption3= $("<option>").attr("value", ([i])).text([i])
-   $("#firstFPTimeHour").append(hourOption)
-   $("#secondFPTimeHour").append(hourOption2)
-   $("#thirdFPTimeHour").append(hourOption3)
+var hours = ["09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+for (var i = 0; i < hours.length; i++) {
+  console.log(hours[i])
+  var hourOption = $("<option>").attr("value", (hours[i])).text(hours[i])
+  var hourOption2 = $("<option>").attr("value", (hours[i])).text(hours[i])
+  var hourOption3 = $("<option>").attr("value", (hours[i])).text(hours[i])
+  $("#firstFPTimeHour").append(hourOption)
+  $("#secondFPTimeHour").append(hourOption2)
+  $("#thirdFPTimeHour").append(hourOption3)
 }
 var minutes = ["00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"]
-for (var j=0; j < minutes.length; j++){
+for (var j = 0; j < minutes.length; j++) {
   console.log(minutes[j])
-   var minuteOption= $("<option>").attr("value", (minutes[j])).text(minutes[j])
-   var minuteOption2= $("<option>").attr("value", (minutes[j])).text(minutes[j])
-   var minuteOption3= $("<option>").attr("value", (minutes[j])).text(minutes[j])
-   $("#firstFPTimeMinute").append(minuteOption)
-   $("#secondFPTimeMinute").append(minuteOption2)
-   $("#thirdFPTimeMinute").append(minuteOption3)
+  var minuteOption = $("<option>").attr("value", (minutes[j])).text(minutes[j])
+  var minuteOption2 = $("<option>").attr("value", (minutes[j])).text(minutes[j])
+  var minuteOption3 = $("<option>").attr("value", (minutes[j])).text(minutes[j])
+  $("#firstFPTimeMinute").append(minuteOption)
+  $("#secondFPTimeMinute").append(minuteOption2)
+  $("#thirdFPTimeMinute").append(minuteOption3)
 }
 
 
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-  $("#profileSave").on("click", function(event){
+  $("#profileSave").on("click", function (event) {
     event.preventDefault();
 
 
@@ -562,43 +605,79 @@ $(document).ready(function(){
     var riderType = $("#profileType").val();
     var heightRestrict = $("#heightRestrict").val();
     var physicalRestrict = $("#physicalRestrict").val();
-    let ref= firebase.database().ref('profiles/' + uid)
-    ref.push({
-        
+    let ref = firebase.database().ref('profiles/' + uid)
+    ref.set({
+
       name: profileName,
       type: riderType,
       maxHeight: heightRestrict,
       physicalRestrict: physicalRestrict,
     })
-
+    firebase.database().ref('profiles/' + uid).on('value', function (snapshot) {
+      profileThrill = (snapshot.val().type)
+      if (profileThrill = "noPref" || "thrill") { profileThrill = true } else if (profileThrill = "noThrill") {
+        profileThrill = false
+      }
+    });
   });
 
-  $("#riderFastPassSubmit").on("click", function(event) {
+  $("#riderFastPassSubmit").on("click", function (event) {
     event.preventDefault();
     let ref = firebase.database().ref('fastpass/' + uid);
-    let fastPassRideOne = $("#firstFPRide").val();
-    console.log(fastPassRideOne)
-    let fastPassTimeOne = $("#firstFPTimeHour").val() + ":" + $("#firstFPTimeMinute").val();
-    console.log(fastPassTimeOne)
-    let fastPassRideTwo = $("#secondFPRide").val();
-    let fastPassTimeTwo = $("#secondFPTimeHour").val() + ":" + $("#secondFPTimeMinute").val();
-    console.log(fastPassTimeTwo)
-    let fastPassRideThree = $("#thirdFPRide").val();
-    let fastPassTimeThree = $("#thirdFPTimeHour").val() + ":" + $("#thirdFPTimeMinute").val();
-    console.log(fastPassTimeThree)
+    firstFastPass = $("#firstFPRide").val().trim();
 
-        ref.set({
-      fp1: fastPassRideOne,
-      fpTime1: fastPassTimeOne,
-      fp2: fastPassRideTwo,
-      fpTime2: fastPassTimeTwo,
-      fp3: fastPassRideThree,
-      fpTime3: fastPassTimeThree,
+    fphours1 = $("#firstFPTimeHour").val()
+    fpminutes1 = $("#firstFPTimeMinute").val()
+    if (fphours1 == null) {
+      fphours1 = "09"
+    }
+    if (fpminutes1 == null) {
+      fpminutes1 = "00"
+    }
+
+    firstFastPassTime = (fphours1 + ":" + fpminutes1);
+
+    secondFastPass = $("#secondFPRide").val().trim();
+
+    fphours2 = $("#secondFPTimeHour").val()
+    fpminutes2 = $("#secondFPTimeMinute").val()
+    if (fphours2 == null) {
+      fphours2 = "09"
+    }
+    if (fpminutes2 == null) {
+      fpminutes2 = "00"
+    }
+
+    secondFastPassTime = (fphours2 + ":" + fpminutes2);
+
+    thirdFastPass = $("#thirdFPRide").val().trim();
+    fphours3 = $("#thirdFPTimeHour").val()
+    fpminutes3 = $("#thirdFPTimeMinute").val()
+    if (fphours3 == null) {
+      fphours3 = "09"
+    }
+    if (fpminutes3 == null) {
+      fpminutes3 = "00"
+    }
+
+    thirdFastPassTime = (fphours3 + ":" + fpminutes3);
+
+
+    ref.set({
+      fp1: firstFastPass,
+      fpTime1: firstFastPassTime,
+      fp2: secondFastPass,
+      fpTime2: secondFastPassTime,
+      fp3: thirdFastPass,
+      fpTime3: thirdFastPassTime,
     })
   });
 
 
-  $("#favoriteSubmit").on("click", function(event) {
+
+
+
+  $("#favoriteSubmit").on("click", function (event) {
     event.preventDefault();
     let ref = firebase.database().ref('favorites/' + uid);
     var favOne = $("#firstFavRide").val()
@@ -612,6 +691,7 @@ $(document).ready(function(){
       fav2: favTwo,
       fav3: favThree,
     })
+    findARide(allRides, uid)
   });
 
   //Sidenav Activate
@@ -626,63 +706,239 @@ $(document).ready(function(){
 
 
 
+var openingTime = "09:00"
+
+var timeRemaining;
+
+//  var firstFastPassTime = moment(firstFastPassTime, "h:mm")
+var diffInTimeToFirstFastPass;
+//  console.log(diffInTimeToFirstFastPass)
+
+//  var secondFastPassTime = moment(secondFastPassTime, "h:mm")
+// // var thirdFastPass = "Mad Tea Party"
+//  var thirdFastPassTime = moment(thirdFastPassTime, "h:mm")
+//  var currentRideTime = openingTime
+
+var closingTime = "19:59"
+var currentRideTime = moment(openingTime, "HH:mm").format("h:mm")
+
+function findARide(arr, uid) {
+
+ 
+  diffInTimeToFirstFastPass = moment(firstFastPassTime, "HH:mm").diff(moment("09:00", "HH:mm"), "minutes") //NEEDS FIRST FAST PASS TIME
+  console.log(diffInTimeToFirstFastPass)
+
+  
+ 
+  var timeRemaining = diffInTimeToFirstFastPass
+
+  currentFastPass = firstFastPass
+  currentFastPassTime = firstFastPassTime
+  nextFastPassTime = secondFastPassTime
+  let ref = firebase.database().ref('schedule/' + uid)
+
+  for (var i = 0; i < arr.length; i += 1) {
+
+
+    var totalTimeOfRide = arr[i].minutesMorning + arr[i].walking + arr[i].duration
+        totalTimeOfRide= parseInt(totalTimeOfRide)
+    if (arr[i].done === true) {
+      console.log(i)
+    } else if (totalTimeOfRide <= timeRemaining && arr[i].name !== firstFastPass &&
+      arr[i].name !== secondFastPass &&
+      arr[i].name !== thirdFastPass) {
 
 
 
-/*
- This is the code to make the materialize cards, I have commented where we need info input
 
-var newDiv1= $("<div>").addClass("row center-align")
-//need time of attraction added\/
-var newTimeP= $("<p>").addClass("col s2 offset-m1 offset-l2 time").text()
-var newDiv2 = $("<div>").addClass("col s9 m7 l4 center-align")
-var newDiv3 = $("<div>").addClass("card center-align")
-var newDiv4 = $("<div>").addClass("card-image")
-//need img file path\/
-var newImg = $("<img>").attr("src", "")
-//need how many minutes for attraction \/
-var newSpan = $("<span").addClass("card-title").attr("id", "minutes").text()
-var newA = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light blue")
-var newI = $("<i>").addClass("material-icons right").text("cloud")
+    
+      console.log( "current RideTime" + currentRideTime)
 
-newA.append(newI)
-newDiv4.append(newImg, newSpan, newA)
+      ref.push({
 
-var newDiv5= $("<div>").addClass("card-content")
-var newDiv6= $("<div>").addClass("row valign-wrapper")
-var newA2 = $("<a>").addClass("waves-effect waves-light btn-large col amber accent-4 s3")
-var newI2 = $("<i>").addClass("material-icons").text("check")
-//need ride name \/
-var newP2 = $("<p>").addClass("col s9 rideTitle").text()
+        ride: arr[i].name,
+        location: arr[i].land,
+        image: arr[i]["imageSource"],
+        fastpass: false,
+        timeOfRide: currentRideTime,
+        totalRideTime: totalTimeOfRide
+
+      })
+      arr[i].done= true
+      currentRideTime = moment(currentRideTime, "h:mm").add(totalTimeOfRide, "minutes").format("h:mm")
+      console.log("2nd" + currentRideTime)
+      timeRemaining -= totalTimeOfRide
+
+    } else if (totalTimeOfRide >= timeRemaining) {
+      for (var j = 0; j < arr.length; j += 1) {
+
+        if (arr[j].name === currentFastPass) {
+          console.log("currentFast Pass time" + currentFastPassTime)
+          currentRideTime = moment(currentFastPassTime, "HH:mm").format("h:mm")
+          
+          
+          var rideTime= arr[j].fastPassTime
+          arr[j].done = true
+          ref.push({
+
+            ride: arr[j].name,
+            location: arr[j].land,
+            image: arr[j]["imageSource"],
+            fastpass: true,
+            timeOfRide: currentRideTime,
+            totalRideTime: 30
+          })
+
+          currentRideTime = moment(currentRideTime, "h:mm").add(60, "minutes").format("h:mm")
+          
+          console.log("current fast pass ride time + 60" + currentRideTime)
+          if (currentFastPass === firstFastPass) {
+            currentFastPass = secondFastPass
+            currentFastPassTime = secondFastPassTime
+            nextFastPassTime = thirdFastPassTime
+          } else if (currentFastPass === secondFastPass) {
+            currentFastPass = thirdFastPass
+            currentFastPassTime = thirdFastPassTime
+            nextFastPassTime = closingTime
+          } else {
+            currentFastPass = ""
+          }
+          diffInTimeToFirstFastPass = moment(nextFastPassTime, "HH:mm").diff(moment(currentRideTime, "h:mm"), "minutes")
+          timeRemaining = diffInTimeToFirstFastPass - 30
+          console.log("time remaining" + timeRemaining)
+          break;
+        }
+
+
+      }
+
+    }
+
+  }
+}
 
 
 
-newA2.append(newI1)
-newDiv6.append(newA2, newP2)
-newDiv5.append(newDiv6)
-
-var newDiv7= $("<div>").addClass("row")
-//need ride location \/
-var newP3 = $("<p>").addClass("col s12 rideLocation").attr("id", "rideLocation").text()
-//need ride description text \/
-var newP4= $("<p>").addClass("col s12  rideDescription").text()
 
 
-newDiv7.append(newP3, newP4)
+firebase.database().ref('schedule/'+ uid).on('value', function(snapshot) {
+  var obj = snapshot.key;
+console.log(obj)
+  firebase.database().ref("schedule/" + uid).on("value", function(snap){
+    snap.forEach(function(childNodes){
+      console.log(childNodes.val().ride)
+  
 
 
-newDiv5.append(newDiv6, newDiv7)
 
-newDiv3.append(newDiv4, newDiv5)
 
-newDiv2.append(newDiv3)
+var splitRide= childNodes.val().ride.split(" ")
+var thisRide= splitRide.join('-')
 
-newDiv1.append(newTimeP, newDiv2)
 
-$("#putCardsHere").append(newDiv1)
+ var rides= ["astro-orbiter","barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree","dumbo-the-flying-elephant","hall-of-presidents", "haunted-mansion","its-a-small-world", "jungle-cruise","mad-tea-party","magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean","prince-charming-regal-carrousel", "seven-dwarfs-mine-train","space-mountain", "splash-mountain","tomorrowland-speedway","tomorrowland-transit-authority-peoplemover", "under-the-sea","walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
 
-*/
+var position = rides.indexOf(thisRide)
+var whatItIs;
+ 
 
+   ride = rides[position]
+   var proxyurl = "https://api.codetabs.com/v1/proxy?quest="
+   var url = "https://touringplans.com/magic-kingdom/attractions/"+ ride + ".json"
+   var newURL = proxyurl + url 
+   
+ $.ajax({
+   url: newURL,
+   method: "GET"
+ })
+ .then(function(response){
+   console.log(response.name + ": " + response["what_it_is"])
+   var whatItIs= response["what_it_is"]
+
+
+   var newDiv1= $("<div>").addClass("row center-align")
+   //need time of attraction added\/
+   var newTimeP= $("<p>").addClass("col s2 offset-m1 offset-l2 time").text(childNodes.val().timeOfRide)
+    var newDiv2 = $("<div>").addClass("col s9 m7 l4 center-align")
+    var newDiv3 = $("<div>").addClass("card center-align")
+    var newDiv4 = $("<div>").addClass("card-image")
+     //need img file path\/
+     
+    var newImg = $("<img>").attr("src", childNodes.val().image)
+    //need how many minutes for attraction \/
+    var newSpan = $("<span>").addClass("card-title").attr("id", "minutes").text(childNodes.val().totalRideTime)
+    var newA = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light blue")
+    var newI = $("<i>").addClass("material-icons right").text("cloud")
+   
+    newA.append(newI)
+    newDiv4.append(newImg, newSpan, newA)
+   
+    var newDiv5= $("<div>").addClass("card-content")
+    var newDiv6= $("<div>").addClass("row valign-wrapper")
+    var newA2 = $("<a>").addClass("waves-effect waves-light btn-large col amber accent-4 s3")
+    var newI2 = $("<i>").addClass("material-icons").text("check").attr("data-check", i).addClass("checkOff")
+    //need ride name \/
+    var newP2 = $("<p>").addClass("col s9 rideTitle").text(childNodes.val().ride)
+   
+   
+   
+    newA2.append(newI2)
+    newDiv6.append(newA2, newP2)
+    newDiv5.append(newDiv6)
+   
+    var newDiv7= $("<div>").addClass("row")
+    //need ride location \/
+    var newP3 = $("<p>").addClass("col s12 rideLocation").attr("id", "rideLocation").text(childNodes.val().location)
+    //need ride description text \/
+
+
+   var newP4= $("<p>").addClass("col s12  rideDescription").text(whatItIs)
+
+
+   newDiv7.append(newP3, newP4)
+  
+  
+   newDiv5.append(newDiv6, newDiv7)
+  
+   newDiv3.append(newDiv4, newDiv5)
+  
+   newDiv2.append(newDiv3)
+  
+   newDiv1.append(newTimeP, newDiv2)
+  
+   $("#putCardsHere").append(newDiv1)
+
+ })
+ 
+
+
+
+
+})
+})
+});
+
+$("body").on("click", ".checkOff", function(){
+    var key= $(this).data("check")
+    database.reference().child(key).remove();
+    database.reference("schedule/"+ uid).child(key).remove();
+    //updating display, removing parent of parent of the button (which is the entire row)
+    $(this).parent().parent().parent().parent().parent().parent().parent().remove()
+    //reload page
+    location.href = location.href
+
+})
+
+
+
+ //  var queryURL = "https://touringplans.com/magic-kingdom/attractions/"+ ride + ".json"
+   
+   
+ //$.ajax({
+  // url: newURL,
+  // method: "GET"
+// })
+ //.then(function(response){
 
 
 /*html for card base
@@ -701,7 +957,7 @@ $("#putCardsHere").append(newDiv1)
                                 <a class="waves-effect waves-light btn-large col amber accent-4 s3 " id="check"><i
                                         class="material-icons">check</i></a>
                                 <p class="col s9 rideTitle">Splash Mountain</p>
-                                
+
                             </div>
                             <div class="row">
                                     <p class="col s12 rideLocation" id="rideLocation">Ride Location</p>
