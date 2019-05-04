@@ -1,0 +1,408 @@
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #3f51b5;
+    /* #84ffff, #3efcfc);*/
+    width: 100%;
+   
+   
+}
+.firstCard{
+    margin-top:30px;
+}
+.time{
+    color:white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 18px;
+    
+}
+header{
+    border-bottom: white  5px solid;
+}
+.rideTitle,
+.rideLocation,
+.rideDescription{
+   color: #3f51b5;
+}
+.rideTitle{
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+#rideLocation{
+    font-size: 15px;
+    text-align:center;
+    margin-bottom: 10px;
+}
+.needBorder{
+    border:#ffab00 10px solid;
+}
+#minutes{
+    background-color: #2196f3;
+    opacity: 1;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    padding: 5px;
+    
+}
+.bar{
+    margin-left: 40px;
+}
+.barLi{
+    margin-right: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+#logOut{
+    background-color:#2196f3;
+    color: white;
+    padding: 5px 10px;
+    border: #2196f3 2px solid;
+}
+#sideNavBack{
+    background-color:#3f51b5;
+}
+#sideNavName{
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+#sideNavEmail{
+    text-align: center;
+}
+#sideNavSchedule{
+    background-color:#ffab00;
+    color: white;
+    font-size:18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.icon-white{
+    color: white;
+}
+.sideNavButton{
+    background-color:#2196f3;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: #2196f3 2px solid;
+    width: 300px;
+    font-size:18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+#break{
+    font-size: 12px;
+    padding: 0px;
+}
+.modal,
+input,
+label{
+    color:#3f51b5;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+#riderName{
+    color:#3f51b5;
+    font-weight: 900;
+    font-size: 22px;
+    margin-bottom: 10px;
+   
+}
+#profileP{
+    margin-bottom: 40px;
+}
+#riderTypeField{
+    margin-bottom: 30px;
+}
+.mobileLogo{
+    position: absolute;
+    display: none;
+}
+@media screen and (max-width: 991px){
+    .mobileLogo{
+        display: block;
+        color: white;
+        top: -25px;
+        z-index: 10;
+        right: 30px;
+        
+    }
+    .mobileLogoH{
+        font-size: 30px;
+    }
+}
+/*log in screen*/
+.loginScreen{
+    color: white;
+}
+.loginP{
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+#firebaseui-auth-container{
+    border:#ffab00 10px solid;
+    background-color: white;
+    width: 382px;
+    margin: 0 auto;
+    text-align: center;
+}
+#firebaseui-auth-container button{
+    color: white;
+    background-color: #2196f3;
+    width: 100px;
+    display:block;
+    margin: 0 auto;
+}
+/*start page*/
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #3f51b5;
+    width: 100%;
+    position: relative;
+    z-index: -3;
+}
+.startDiv{
+    height: 600px;
+    width: 1500px;
+     position: absolute;
+     z-index: -1;
+    background-color: 
+    #3f51b5;
+    opacity: 1;
+}
+.startH1{
+    color: white;
+    width: 600px;
+    position: relative;
+    z-index: 5;
+    font-size: 100px;
+    font-family: calibri;
+    letter-spacing: 1px;
+    text-shadow:  1px 1px black;
+    margin: 0 auto;
+    margin-top: 400px;
+}
+.button1{
+     width: 135px;
+     display: block;
+     position: relative;
+    padding: 10px 30px;
+    margin: 20px auto;
+    
+    color: 
+    white;
+    background-color: 
+    #ffab00;
+}
+.centerIt{
+    width: 100%;
+}
+button{
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: Calibri;
+    font-size: 20px;
+ 
+}
+.big{
+    z-index: -2;
+    position: absolute;
+    top: 400px;
+        left: 48%;
+    animation-name: firework;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+}
+@keyframes firework {
+    0%   {
+        height: 20px;
+        
+       }
+       50%{
+        height: 20px;
+        left: 48%;
+       }
+    75%{
+        height: 20px;
+        left: 48%;
+    }
+   
+    100% {
+        height: 280px;
+        top: 30px;
+        left: 40%;
+         }
+  }
+  .medium{
+    z-index: -2;
+    position: absolute;
+    top: 400px;
+        left: 53%;
+    animation-name: firework2;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes firework2 {
+    0%   {
+        height: 20px;
+        
+       }
+       50%{
+        height: 20px;
+        left: 53%;
+       }
+    75%{
+        height: 20px;
+        left: 53%;
+    }
+   
+    100% {
+        height: 200px;
+        top: 150px;
+        left: 51%;
+         }
+  }
+  .small{
+    z-index: -2;
+    position: absolute;
+    top: 400px;
+        left: 39%;
+    animation-name: firework3;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+@keyframes firework3 {
+    0%   {
+        height: 20px;
+        
+       }
+       50%{
+        height: 20px;
+        left: 39%;
+       }
+    75%{
+        height: 20px;
+        left: 39%;
+    }
+   
+    100% {
+        height: 150px;
+        top: 210px;
+        left: 37%;
+         }
+  }
+  @media screen and (max-width: 600px){
+    .big{
+        z-index: -2;
+        position: absolute;
+        top: 400px;
+            left: 48%;
+        animation-name: firework;
+        animation-duration: 2.5s;
+        animation-fill-mode: forwards;
+    }
+    
+    
+    
+    @keyframes firework {
+        0%   {
+            height: 20px;
+            
+           }
+           50%{
+            height: 20px;
+            left: 48%;
+           }
+    
+        75%{
+            height: 20px;
+            left: 48%;
+        }
+       
+        100% {
+            height: 280px;
+            top: 30px;
+            left: 18%;
+             }
+      }
+    
+      .medium{
+        z-index: -2;
+        position: absolute;
+        top: 400px;
+            left: 53%;
+        animation-name: firework2;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+    
+    
+    
+    @keyframes firework2 {
+        0%   {
+            height: 20px;
+            
+           }
+           50%{
+            height: 20px;
+            left: 53%;
+           }
+    
+        75%{
+            height: 20px;
+            left: 53%;
+        }
+       
+        100% {
+            height: 200px;
+            top: 150px;
+            left: 41%;
+             }
+      }
+    
+      .small{
+        z-index: -2;
+        position: absolute;
+        top: 400px;
+            left: 39%;
+        animation-name: firework3;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+    }
+    
+    
+    
+    @keyframes firework3 {
+        0%   {
+            height: 20px;
+            
+           }
+           50%{
+            height: 20px;
+            left: 39%;
+           }
+    
+        75%{
+            height: 20px;
+            left: 39%;
+        }
+       
+        100% {
+            height: 150px;
+            top: 210px;
+            left: 15%;
+             }
+      }
+.startH1{
+    font-size: 70px;
+    width: 300px;
+}
+  }

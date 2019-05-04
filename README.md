@@ -1,63 +1,40 @@
 # TourApp
-Creates a daily schedule for a Disney theme park
-
-#Outline Notes:
-    User Input:  
-        Log in
-        Fast passes -- This filters your selected rides into their accompanied "time slots"
-        How long do you plan on staying
-        Group Info - height | Mild Thrilling |  -- This filters the list immediately to these input preferences
-
-    JSON data needed:
-        "name":
-        "what_it_is":
-        "duration":(ride)
-        "intense":
-        "scope_and_scale_code":
-        "when_to_go":
-        "height_restriction":
-        ?? "walk-time":
-
-    Our Data additions:
-        fast passes
-        their choice
-        major rides
-        smaller rides
+Creates an optimized daily schedule for a Magic Kingdom park aimed at novice users while also allowing experieced users to customize their schedule. 
 
 
-    backend 
-        -1 get it working
-        -create databases
+#Presentation
 
-    
-    JS functions needed:
-        function priority()
-            //assigns priority variable to each and every ride
-                //local ride priority based on 1-5 rating, then for multiple 3s make some 3.01/3.02/3.03 etc 
+Corey:
+problem: I am a tour guide for disney. I know my way around the parks extremely well as a result, but obviously not everyone does. Anyone who has spent even a little time in one of Disney's many parks knows that it can be kind of daunting to decide where to go, let alone the entirely different level of when to go to have the shortest lines, how to go through the park to get on the most rides or which rides are the best and should be prioritized.  This leads to most people not getting the most magic out of their day at Disney. But there is now a better way to get the most magical experience possible.
 
-        function scheduleSort()
-            // sorts them in order of priority
-        function scheduleReset()
-            clears previous schedule out of the html, and resets all variables
-        function placeFP()
-            //places FPs on the preliminary list
-        function breaks()
-            //places breaks on the preliminary list
-        function timeCalculation()
-            //calculate walking times
-        function generateSchedule
-            // generates schedule with priority in mind (and the FP/breaks blocks), and outputs the schedule to the frontend
-        function favoriteCheck
-            //checks if all favorites are on the list (limit to 2/3). If not, adds priority and calls genschedule again.        
+solution (how): Our app takes your input on your favorite rides, fastpasses, ride preferences, and height/physical restrictions (handicap/pregnant) and turns it into a full, customized schedule for you and your group that makes for a much more magical time in the park. 
 
-    frontend 
-        -look & feel
-        create html & css elements
-        flow charts
-        wires
-        functionality
-        materialize-what components do we need?
+Steps: We used firebase, firebase authentication, toursAPI (and a proxy to use it), weatherAPI, materialize, dynamically creating schedule w/ JQuery
+
+	Firebase is used to store all the things we need for the program because it needs to carry over from multiple sessions. We used firebase authentication so that google handles passwords/encryption and that is one less thing we have to host ourselves.
+
+	We use ToursAPI to get data like what the average wait time is, if there are physical restrictions, etc. 
+
+	Proxy: Corey (1m)
+
+	Weather Api to pull weather and display icon (hour by hour)
+
+	materialize for style/format
+
+	dynamically create schedule with Jquery 
+
+
+Walkthrough (1m, can stretch if necessary)
 
 
 
-text to push
+2.0: 
+multiple profiles
+custom weather icons
+instructions page on how to use it/customize
+animation screen on opening if not signed in for a magical feeling
+Ability to select rides specifically to not put them on
+change modals to different pages (better UX)
+ability to login w/ facebook, google etc
+custom branding
+More work on styling/animations "magic" feel
