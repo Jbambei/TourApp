@@ -68,7 +68,7 @@ var allRides = [{
   fastpass: false,
   fastPassTime: null,
   favorite: false,
-  land: "Frontier",
+  land: "Frontierland",
   priority: 5,
   minutesMorning: 25,
   minutesPeak: 50,
@@ -83,12 +83,28 @@ var allRides = [{
   fastpass: false,
   fastPassTime: null,
   favorite: false,
-  land: "Frontier",
+  land: "Frontierland",
   priority: 1,
   minutesMorning: 10,
   minutesPeak: 10,
   walking: 10,
   duration: 30,
+  done: false
+},
+{
+  name: "Country Bears' Jamboree",
+  height: "any",
+  thrill: false,
+  fastpass: false,
+  fastPassTime: null,
+  favorite: false,
+  land: "Frontierland",
+  height: 40,
+  priority: 1,
+  minutesMorning: 16,
+  minutesPeak: 16,
+  walking: 10,
+  duration: 10,
   done: false
 },
 
@@ -167,24 +183,6 @@ var allRides = [{
   duration: 15.5,
   done: false
 },
-
-{
-  name: "Country Bears' Jamboree",
-  height: "any",
-  thrill: false,
-  fastpass: false,
-  fastPassTime: null,
-  favorite: false,
-  land: "Frontier",
-  height: 40,
-  priority: 1,
-  minutesMorning: 16,
-  minutesPeak: 16,
-  walking: 10,
-  duration: 10,
-  done: false
-},
-
 {
   name: "The Haunted Mansion",
   height: "any",
