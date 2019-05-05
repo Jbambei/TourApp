@@ -484,7 +484,6 @@ loop through the master array, pushing each entry to firebase if they have time 
 
 //cuts out rides they can't go on
 /* PULL HEIGHT FROM FIREBASE, SET TO A VARIABLE
-
 if (minHeight < 38) {
     allRides.splice(index,1)
     allRides.splice(index,1)
@@ -498,9 +497,6 @@ if (minHeight < 38) {
 } else {
     console.log("no restrictions :)")
 }
-
-
-
 //cuts out rides for non-thrill riders
 /*
 if profileThrill (get from firebase) = false {
@@ -529,11 +525,7 @@ ref.push({
 
 
 /*
-
 var rides= ["astro-orbiter","barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree","dumbo-the-flying-elephant","hall-of-presidents", "haunted-mansion","its-a-small-world", "jungle-cruise","mad-tea-party","magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean","prince-charming-regal-carrousel", "seven-dwarfs-mine-train","space-mountain", "splash-mountain","tomorrowland-speedway","tomorrowland-transit-authority-peoplemover", "under-the-sea","walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
-
-
-
 for(var i=0; i< rides.length ; i++){
   ride = rides[i]
   var proxyurl = "https://cors-anywhere.herokuapp.com/"
@@ -549,7 +541,6 @@ $.ajax({
   console.log(response.name + ": " + response["average_wait_per_hundred"])
 })
 }
-
 */
 
 
@@ -572,7 +563,7 @@ for (var i = 0; i < allRides.length; i++) {
 
 }
 
-var hours = ["09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+var hours = ["09", "10", "11", "12", "13", "14", "15", "16", "17"]
 for (var i = 0; i < hours.length; i++) {
   console.log(hours[i])
   var hourOption = $("<option>").attr("value", (hours[i])).text(hours[i])
@@ -691,6 +682,7 @@ $(document).ready(function () {
       fav2: favTwo,
       fav3: favThree,
     })
+    
     findARide(allRides, uid)
   });
 
@@ -745,17 +737,11 @@ function findARide(arr, uid) {
     var totalTimeOfRide = arr[i].minutesMorning + arr[i].walking + arr[i].duration
         totalTimeOfRide= parseInt(totalTimeOfRide)
 
-     
     if (arr[i].done === true|| arr[i].fastpass === true) {
-    
       console.log(i)
     } else if (totalTimeOfRide <= timeRemaining && arr[i].name !== firstFastPass &&
       arr[i].name !== secondFastPass &&
       arr[i].name !== thirdFastPass) {
-
-
-
-
     
       console.log( "current RideTime" + currentRideTime)
       currentRideTime = moment(currentFastPassTime, "h:mm").add(totalTimeOfRide, "minutes").format("h:mm")
@@ -777,7 +763,7 @@ function findARide(arr, uid) {
     } else if (totalTimeOfRide >= timeRemaining) {
       for (var j = 0; j < arr.length; j += 1) {
 
-        if (arr[j].name === currentFastPass) {
+        if (arr[j].name === currentFastPass && arr[j].done !== true) {
           console.log("currentFast Pass time" + currentFastPassTime)
           // currentRideTime = moment(currentFastPassTime, "HH:mm").format("h:mm")
           currentRideTime = moment(currentRideTime, "h:mm").add(60, "minutes").format("h:mm")
@@ -907,8 +893,14 @@ var whatItIs;
    newDiv5.append(newDiv6, newDiv7)
   
    newDiv3.append(newDiv4, newDiv5)
+   if(childNodes.val().fastpass === true){
+
+    newDiv3.addClass("needBorder")
+   }
   
    newDiv2.append(newDiv3)
+
+   
   
    newDiv1.append(newTimeP, newDiv2)
   
@@ -963,7 +955,6 @@ $("body").on("click", ".checkOff", function(){
                                 <a class="waves-effect waves-light btn-large col amber accent-4 s3 " id="check"><i
                                         class="material-icons">check</i></a>
                                 <p class="col s9 rideTitle">Splash Mountain</p>
-
                             </div>
                             <div class="row">
                                     <p class="col s12 rideLocation" id="rideLocation">Ride Location</p>
@@ -975,12 +966,3 @@ $("body").on("click", ".checkOff", function(){
                 </div>
             </div>
             */
-
-
-
-
-
-
-
-
-
