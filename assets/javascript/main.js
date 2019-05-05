@@ -745,17 +745,9 @@ function findARide(arr, uid) {
     var totalTimeOfRide = arr[i].minutesMorning + arr[i].walking + arr[i].duration
         totalTimeOfRide= parseInt(totalTimeOfRide)
 
-        // if (arr[i].name === firstFastPass && arr[i].fastPassTime == null){
-        //   arr[i].fastpass = true
-        //   arr[i].fastPassTime = firstFastPassTime
-        // } else if (arr[i].name === firstFastPass && arr[i].fastPassTime == null){
-        //   arr[i].fastpass = true
-        //   arr[i].fastPassTime = secondFastPassTime
-        // }  else if (arr[i].name === firstFastPass && arr[i].fastPassTime == null){
-        //   arr[i].fastpass = true
-        //   arr[i].fastPassTime = secondFastPassTime
-        // }
-    if (arr[i].done === true) {
+     
+    if (arr[i].done === true|| arr[i].fastpass === true) {
+    
       console.log(i)
     } else if (totalTimeOfRide <= timeRemaining && arr[i].name !== firstFastPass &&
       arr[i].name !== secondFastPass &&
