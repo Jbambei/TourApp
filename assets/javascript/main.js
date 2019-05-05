@@ -572,7 +572,7 @@ for (var i = 0; i < allRides.length; i++) {
 
 }
 
-var hours = ["09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+var hours = ["09", "10", "11", "12", "13", "14", "15", "16", "17"]
 for (var i = 0; i < hours.length; i++) {
   console.log(hours[i])
   var hourOption = $("<option>").attr("value", (hours[i])).text(hours[i])
@@ -691,6 +691,7 @@ $(document).ready(function () {
       fav2: favTwo,
       fav3: favThree,
     })
+    
     findARide(allRides, uid)
   });
 
