@@ -742,15 +742,11 @@ function findARide(arr, uid) {
 
     var totalTimeOfRide = arr[i].minutesMorning + arr[i].walking + arr[i].duration
         totalTimeOfRide= parseInt(totalTimeOfRide)
-    if (arr[i].done === true) {
+    if (arr[i].done === true|| arr[i].fastpass === true) {
       console.log(i)
     } else if (totalTimeOfRide <= timeRemaining && arr[i].name !== firstFastPass &&
       arr[i].name !== secondFastPass &&
       arr[i].name !== thirdFastPass) {
-
-
-
-
     
       console.log( "current RideTime" + currentRideTime)
 
@@ -772,7 +768,7 @@ function findARide(arr, uid) {
     } else if (totalTimeOfRide >= timeRemaining) {
       for (var j = 0; j < arr.length; j += 1) {
 
-        if (arr[j].name === currentFastPass) {
+        if (arr[j].name === currentFastPass && arr[j].done !== true) {
           console.log("currentFast Pass time" + currentFastPassTime)
           currentRideTime = moment(currentFastPassTime, "HH:mm").format("h:mm")
           
@@ -901,8 +897,14 @@ var whatItIs;
    newDiv5.append(newDiv6, newDiv7)
   
    newDiv3.append(newDiv4, newDiv5)
+   if(childNodes.val().fastpass === true){
+
+    newDiv3.addClass("needBorder")
+   }
   
    newDiv2.append(newDiv3)
+
+   
   
    newDiv1.append(newTimeP, newDiv2)
   
