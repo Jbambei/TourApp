@@ -711,18 +711,20 @@ var diffInTimeToFirstFastPass;
 //  var thirdFastPassTime = moment(thirdFastPassTime, "h:mm")
 //  var currentRideTime = openingTime
 
-var closingTime = "19:59"
-var currentRideTime = moment(openingTime, "HH:mm").format("h:mm")
+var closingTime = "20:59"
+var currentRideTime ;
 
 function findARide(arr, uid) {
 
  
-  diffInTimeToFirstFastPass = moment(firstFastPassTime, "HH:mm").diff(moment("09:00", "HH:mm"), "minutes") //NEEDS FIRST FAST PASS TIME
+  diffInTimeToFirstFastPass = moment(firstFastPassTime, "HH:mm").diff(moment("9:00", "HH:mm"), "minutes") //NEEDS FIRST FAST PASS TIME
   console.log(diffInTimeToFirstFastPass)
+  currentRideTime = openingTime;
+  secondFastPassTime = moment(secondFastPassTime, "h:mm")
+  thirdFastPassTime = moment(thirdFastPassTime, "h:mm")
 
-  
  
-  var timeRemaining = diffInTimeToFirstFastPass
+  timeRemaining = diffInTimeToFirstFastPass
 
   currentFastPass = firstFastPass
   currentFastPassTime = firstFastPassTime
@@ -734,6 +736,7 @@ function findARide(arr, uid) {
 
     var totalTimeOfRide = arr[i].minutesMorning + arr[i].walking + arr[i].duration
         totalTimeOfRide= parseInt(totalTimeOfRide)
+
     if (arr[i].done === true|| arr[i].fastpass === true) {
       console.log(i)
     } else if (totalTimeOfRide <= timeRemaining && arr[i].name !== firstFastPass &&
@@ -741,6 +744,7 @@ function findARide(arr, uid) {
       arr[i].name !== thirdFastPass) {
     
       console.log( "current RideTime" + currentRideTime)
+      currentRideTime = moment(currentFastPassTime, "h:mm").add(totalTimeOfRide, "minutes").format("h:mm")
 
       ref.push({
 
@@ -753,7 +757,6 @@ function findARide(arr, uid) {
 
       })
       arr[i].done= true
-      currentRideTime = moment(currentRideTime, "h:mm").add(totalTimeOfRide, "minutes").format("h:mm")
       console.log("2nd" + currentRideTime)
       timeRemaining -= totalTimeOfRide
 
@@ -762,8 +765,9 @@ function findARide(arr, uid) {
 
         if (arr[j].name === currentFastPass && arr[j].done !== true) {
           console.log("currentFast Pass time" + currentFastPassTime)
-          currentRideTime = moment(currentFastPassTime, "HH:mm").format("h:mm")
-          
+          // currentRideTime = moment(currentFastPassTime, "HH:mm").format("h:mm")
+          currentRideTime = moment(currentRideTime, "h:mm").add(60, "minutes").format("h:mm")
+
           
           var rideTime= arr[j].fastPassTime
           arr[j].done = true
@@ -841,7 +845,7 @@ var whatItIs;
  })
  .then(function(response){
    console.log(response.name + ": " + response["what_it_is"])
-   var whatItIs= response["what_it_is"]
+   whatItIs = response["what_it_is"]
 
 
    var newDiv1= $("<div>").addClass("row center-align")
@@ -914,7 +918,7 @@ var whatItIs;
 
 $("body").on("click", ".checkOff", function(){
     var key= $(this).data("check")
-    database.reference().child(key).remove();
+    firebase.database().reference().child(key).remove();
     database.reference("schedule/"+ uid).child(key).remove();
     //updating display, removing parent of parent of the button (which is the entire row)
     $(this).parent().parent().parent().parent().parent().parent().parent().remove()
