@@ -81,7 +81,7 @@ var allRides = [{
   walking: 10,
   duration: 18,
   done: false,
-  imageSource: "assets/images/frontierland/splashmountain.jpg"
+  imageSource: "assets/images/frontierland/splashMountain.jpg"
 },
 {
   name: "Big Thunder Mountain Railroad",
