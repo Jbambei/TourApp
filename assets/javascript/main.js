@@ -163,7 +163,7 @@ var allRides = [{
   walking: 10,
   duration: 8,
   done: false,
-  imageSource: "assets/images/adventureland/jungleCruise.jpg"
+  imageSource: "assets/images/adventureland/jungleCruise.png"
 },
 {
   name: "The Magic Carpets of Aladdin",
