@@ -149,6 +149,17 @@ label{
     display: none;
 }
 
+#weatherAnchor{
+    height: 50px;
+    width: 50px;
+}
+
+#weather{
+    height: 40px;
+    width: 40px;
+    margin-left: 4px;
+    margin-top: 2px;
+}
 
 @media screen and (max-width: 991px){
     .mobileLogo{

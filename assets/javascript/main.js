@@ -851,31 +851,56 @@ firebase.database().ref('schedule/' + uid).on('value', function (snapshot) {
 
 
 
+/*
+
+      var splitRide = childNodes.val().ride.split(" ")
+      var thisRide = splitRide.join('-')
 
 
-   //   var splitRide = childNodes.val().ride.split(" ")
-  //    var thisRide = splitRide.join('-')
+      var rides = ["astro-orbiter", "barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree", "dumbo-the-flying-elephant", "hall-of-presidents", "haunted-mansion", "its-a-small-world", "jungle-cruise", "mad-tea-party", "magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean", "prince-charming-regal-carrousel", "seven-dwarfs-mine-train", "space-mountain", "splash-mountain", "tomorrowland-speedway", "tomorrowland-transit-authority-peoplemover", "under-the-sea", "walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
+
+      var position = rides.indexOf(thisRide)
+      var whatItIs;
 
 
-   //   var rides = ["astro-orbiter", "barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree", "dumbo-the-flying-elephant", "hall-of-presidents", "haunted-mansion", "its-a-small-world", "jungle-cruise", "mad-tea-party", "magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean", "prince-charming-regal-carrousel", "seven-dwarfs-mine-train", "space-mountain", "splash-mountain", "tomorrowland-speedway", "tomorrowland-transit-authority-peoplemover", "under-the-sea", "walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
+      ride = rides[position]
+      var proxyurl = "https://cors-anywhere.herokuapp.com/"
+      var url = "https://touringplans.com/magic-kingdom/attractions/" + ride + ".json"
+      var newURL = proxyurl + url
 
-   //   var position = rides.indexOf(thisRide)
-   //   var whatItIs;
+     $.ajax({
+        url: newURL,
+        method: "GET"
+      })
+        .then(function (response) {
+         console.log(response.name + ": " + response["what_it_is"])
+         var whatItIs = response["what_it_is"]
+         console.log(whatItIs)
+         */
 
-
-    //  ride = rides[position]
-     // var proxyurl = "https://api.codetabs.com/v1/proxy?quest="
-    //  var url = "https://touringplans.com/magic-kingdom/attractions/" + ride + ".json"
-    //  var newURL = proxyurl + url
-
-    //  $.ajax({
-    //    url: newURL,
-    //    method: "GET"
-    //  })
-     //   .then(function (response) {
-     //     console.log(response.name + ": " + response["what_it_is"])
-    //      var whatItIs = response["what_it_is"]
-
+        var queryURL = "https://api.weatherbit.io/v2.0/forecast/hourly?city=Orlando,FL&key=0800dc28cb144d7387ece15a0aca5641"
+        
+  
+       $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          .then(function (response) {
+           
+            //var neededTime= moment(childNodes.val().timeOfRide, "h:mm").format("HH:mm")
+            
+           // var neededDateMonth= moment().format("MM")
+           // var neededDateYear= moment().format("YYYY")
+           // var neededDateTime= neededDateYear + "-" + neededDateMonth + "-" + neededTime
+           // var newResponse= response.data
+      
+           // console.log(neededDateTime)
+           // for (var i = 0; i < newResponse.length; i++){
+             
+           // if(newResponse[i].datetime === neededDateTime){
+           //    var icon= newResponse[i].weather.icon
+           //    console.log(icon)
+          
 
           var newDiv1 = $("<div>").addClass("row center-align")
           //need time of attraction added\/
@@ -889,7 +914,13 @@ firebase.database().ref('schedule/' + uid).on('value', function (snapshot) {
           //need how many minutes for attraction \/
           var newSpan = $("<span>").addClass("card-title").attr("id", "minutes").text(childNodes.val().totalRideTime)
           var newA = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light blue")
-          var newI = $("<i>").addClass("material-icons right").text("cloud")
+                             .attr("id", "weatherAnchor")
+
+          var icon= response.data[0].weather.icon
+          var newI = $("<img>").attr("src", `https://www.weatherbit.io/static/img/icons/${icon}.png`)
+                                 
+                                 .attr("id", "weather")
+          console.log(`https://www.weatherbit.io/static/img/icons/${icon}.png`)
 
           newA.append(newI)
           newDiv4.append(newImg, newSpan, newA)
@@ -935,6 +966,9 @@ firebase.database().ref('schedule/' + uid).on('value', function (snapshot) {
 
           $("#putCardsHere").append(newDiv1)
            
+       // }
+      //}
+        })
       //  })
 
         
