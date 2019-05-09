@@ -563,7 +563,7 @@ for (var i = 0; i < allRides.length; i++) {
 
 }
 
-var hours = ["09", "10", "11", "12", "13", "14", "15", "16", "17"]
+var hours = ["10", "11", "12", "13", "14", "15", "16", "17"]
 for (var i = 0; i < hours.length; i++) {
   console.log(hours[i])
   var hourOption = $("<option>").attr("value", (hours[i])).text(hours[i])
@@ -665,11 +665,16 @@ $(document).ready(function () {
   });
 
 
-
+$("#profileCreate").on("click", function(){
+  firebase.database().ref('schedule/').remove()
+  $("#putCardsHere").empty()
+})
 
 
   $("#favoriteSubmit").on("click", function (event) {
     event.preventDefault();
+    
+    
     let ref = firebase.database().ref('favorites/' + uid);
     var favOne = $("#firstFavRide").val()
     favOne = !(favOne) ? "none" : $("#firstFavRide").val().trim();
@@ -682,8 +687,9 @@ $(document).ready(function () {
       fav2: favTwo,
       fav3: favThree,
     })
-    
+
     findARide(allRides, uid)
+    
   });
 
   //Sidenav Activate
@@ -712,16 +718,16 @@ var diffInTimeToFirstFastPass;
 //  var currentRideTime = openingTime
 
 var closingTime = "19:59"
-var currentRideTime = moment(openingTime, "HH:mm").format("h:mm")
+var currentRideTime = openingTime
 
 function findARide(arr, uid) {
 
- 
-  diffInTimeToFirstFastPass = moment(firstFastPassTime, "HH:mm").diff(moment("09:00", "HH:mm"), "minutes") //NEEDS FIRST FAST PASS TIME
+
+  diffInTimeToFirstFastPass = moment(firstFastPassTime, "HH:mm").diff(moment(currentRideTime, "HH:mm"), "minutes") //NEEDS FIRST FAST PASS TIME
   console.log(diffInTimeToFirstFastPass)
 
-  
- 
+
+
   var timeRemaining = diffInTimeToFirstFastPass
 
   currentFastPass = firstFastPass
@@ -733,52 +739,68 @@ function findARide(arr, uid) {
 
 
     var totalTimeOfRide = arr[i].minutesMorning + arr[i].walking + arr[i].duration
-        totalTimeOfRide= parseInt(totalTimeOfRide)
-    if (arr[i].done === true|| arr[i].fastpass === true) {
+    totalTimeOfRide = parseInt(totalTimeOfRide)
+    if (arr[i].done === true || arr[i].fastpass === true) {
       console.log(i)
     } else if (totalTimeOfRide <= timeRemaining && arr[i].name !== firstFastPass &&
       arr[i].name !== secondFastPass &&
       arr[i].name !== thirdFastPass) {
-    
-      console.log( "current RideTime" + currentRideTime)
 
-      ref.push({
+      console.log("current RideTime" + currentRideTime)
+    var timeStampNeeded= moment().add(i, "minutes").format("X")
+     timeStampNeeded= parseInt(timeStampNeeded)
 
-        ride: arr[i].name,
-        location: arr[i].land,
-        image: arr[i]["imageSource"],
-        fastpass: false,
-        timeOfRide: currentRideTime,
-        totalRideTime: totalTimeOfRide
+    var currentRideTimeConverted= moment(currentRideTime, "HH:mm").format("h:mm")
+        ref.push({
 
-      })
-      arr[i].done= true
-      currentRideTime = moment(currentRideTime, "h:mm").add(totalTimeOfRide, "minutes").format("h:mm")
+          ride: arr[i].name,
+          location: arr[i].land,
+          image: arr[i]["imageSource"],
+          fastpass: false,
+          timeOfRide: currentRideTimeConverted,
+          totalRideTime: totalTimeOfRide,
+          timestamp: timeStampNeeded
+
+        })
+
+      
+      
+      arr[i].done = true
+      currentRideTime = moment(currentRideTime, "HH:mm").add(totalTimeOfRide, "minutes")
       console.log("2nd" + currentRideTime)
       timeRemaining -= totalTimeOfRide
 
-    } else if (totalTimeOfRide >= timeRemaining) {
+    } else if (totalTimeOfRide > timeRemaining) {
       for (var j = 0; j < arr.length; j += 1) {
 
         if (arr[j].name === currentFastPass && arr[j].done !== true) {
           console.log("currentFast Pass time" + currentFastPassTime)
-          currentRideTime = moment(currentFastPassTime, "HH:mm").format("h:mm")
+          currentRideTime = moment(currentFastPassTime, "HH:mm")
+
+
           
-          
-          var rideTime= arr[j].fastPassTime
           arr[j].done = true
-          ref.push({
 
-            ride: arr[j].name,
-            location: arr[j].land,
-            image: arr[j]["imageSource"],
-            fastpass: true,
-            timeOfRide: currentRideTime,
-            totalRideTime: 30
-          })
+          var timeStampNeed= moment().add(i, "minutes").format("X")
+          timeStampNeed= parseInt(timeStampNeed)
 
-          currentRideTime = moment(currentRideTime, "h:mm").add(60, "minutes").format("h:mm")
+          var currentRideTimeConv= moment(currentRideTime, "HH:mm").format("h:mm")
           
+            ref.push({
+
+              ride: arr[j].name,
+              location: arr[j].land,
+              image: arr[j]["imageSource"],
+              fastpass: true,
+              timeOfRide: currentRideTimeConv,
+              totalRideTime: 30,
+              timestamp: timeStampNeed
+            })
+          
+
+          currentRideTime = moment(currentRideTime, "HH:mm").add(60, "minutes")
+          
+
           console.log("current fast pass ride time + 60" + currentRideTime)
           if (currentFastPass === firstFastPass) {
             currentFastPass = secondFastPass
@@ -788,16 +810,26 @@ function findARide(arr, uid) {
             currentFastPass = thirdFastPass
             currentFastPassTime = thirdFastPassTime
             nextFastPassTime = closingTime
-          } else {
-            currentFastPass = ""
+          } else if (currentFastPass=== thirdFastPass) {
+            currentFastPass = "Closing"
+            currentFastPassTime= closingTime
+            nextFastPassTime= ""
+          }else{
+            break;
           }
-          diffInTimeToFirstFastPass = moment(nextFastPassTime, "HH:mm").diff(moment(currentRideTime, "h:mm"), "minutes")
-          timeRemaining = diffInTimeToFirstFastPass - 30
+          console.log(currentFastPassTime)
+          diffInTimeToFirstFastPass = moment(currentFastPassTime, "HH:mm").diff(moment(currentRideTime, "HH:mm"), "minutes")
+          
+          //if(diffInTimeToFirstFastPass >= 400){
+          //diffInTimeToFirstFastPass= 1440- diffInTimeToFirstFastPass
+          //}
+          console.log("diff in time:" + diffInTimeToFirstFastPass)
+          timeRemaining = diffInTimeToFirstFastPass 
           console.log("time remaining" + timeRemaining)
           break;
         }
 
-
+        
       }
 
     }
@@ -806,128 +838,173 @@ function findARide(arr, uid) {
 }
 
 
+$(document).ready(function(){
+  
 
-
-
-firebase.database().ref('schedule/'+ uid).on('value', function(snapshot) {
+firebase.database().ref('schedule/' + uid).on('value', function (snapshot) {
   var obj = snapshot.key;
-console.log(obj)
-  firebase.database().ref("schedule/" + uid).on("value", function(snap){
-    snap.forEach(function(childNodes){
+  console.log(obj)
+  firebase.database().ref("schedule/" + uid).orderByKey().on("value", function (snap) {
+    $("#putCardsHere").empty()
+    snap.forEach(function (childNodes) {
       console.log(childNodes.val().ride)
+
+
+
+/*
+
+      var splitRide = childNodes.val().ride.split(" ")
+      var thisRide = splitRide.join('-')
+
+
+      var rides = ["astro-orbiter", "barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree", "dumbo-the-flying-elephant", "hall-of-presidents", "haunted-mansion", "its-a-small-world", "jungle-cruise", "mad-tea-party", "magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean", "prince-charming-regal-carrousel", "seven-dwarfs-mine-train", "space-mountain", "splash-mountain", "tomorrowland-speedway", "tomorrowland-transit-authority-peoplemover", "under-the-sea", "walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
+
+      var position = rides.indexOf(thisRide)
+      var whatItIs;
+
+
+      ride = rides[position]
+      var proxyurl = "https://cors-anywhere.herokuapp.com/"
+      var url = "https://touringplans.com/magic-kingdom/attractions/" + ride + ".json"
+      var newURL = proxyurl + url
+
+     $.ajax({
+        url: newURL,
+        method: "GET"
+      })
+        .then(function (response) {
+         console.log(response.name + ": " + response["what_it_is"])
+         var whatItIs = response["what_it_is"]
+         console.log(whatItIs)
+         */
+
+        var queryURL = "https://api.weatherbit.io/v2.0/forecast/hourly?city=Orlando,FL&key=0800dc28cb144d7387ece15a0aca5641"
+        
   
+       $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          .then(function (response) {
+           
+            //var neededTime= moment(childNodes.val().timeOfRide, "h:mm").format("HH:mm")
+            
+           // var neededDateMonth= moment().format("MM")
+           // var neededDateYear= moment().format("YYYY")
+           // var neededDateTime= neededDateYear + "-" + neededDateMonth + "-" + neededTime
+           // var newResponse= response.data
+      
+           // console.log(neededDateTime)
+           // for (var i = 0; i < newResponse.length; i++){
+             
+           // if(newResponse[i].datetime === neededDateTime){
+           //    var icon= newResponse[i].weather.icon
+           //    console.log(icon)
+          
+
+          var newDiv1 = $("<div>").addClass("row center-align")
+          //need time of attraction added\/
+          var newTimeP = $("<p>").addClass("col s2 offset-m1 offset-l2 time").text(childNodes.val().timeOfRide)
+          var newDiv2 = $("<div>").addClass("col s9 m7 l4 center-align")
+          var newDiv3 = $("<div>").addClass("card center-align")
+          var newDiv4 = $("<div>").addClass("card-image")
+          //need img file path\/
+
+          var newImg = $("<img>").attr("src", childNodes.val().image)
+          //need how many minutes for attraction \/
+          var newSpan = $("<span>").addClass("card-title").attr("id", "minutes").text(childNodes.val().totalRideTime)
+          var newA = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light blue")
+                             .attr("id", "weatherAnchor")
+
+          var icon= response.data[0].weather.icon
+          var newI = $("<img>").attr("src", `https://www.weatherbit.io/static/img/icons/${icon}.png`)
+                                 
+                                 .attr("id", "weather")
+          console.log(`https://www.weatherbit.io/static/img/icons/${icon}.png`)
+
+          newA.append(newI)
+          newDiv4.append(newImg, newSpan, newA)
+
+          var newDiv5 = $("<div>").addClass("card-content")
+          var newDiv6 = $("<div>").addClass("row valign-wrapper")
+          var newA2 = $("<a>").addClass("waves-effect waves-light btn-large col amber accent-4 s3")
+          var newI2 = $("<i>").addClass("material-icons").text("check").attr("data-check", i).addClass("checkOff")
+          //need ride name \/
+          var newP2 = $("<p>").addClass("col s9 rideTitle").text(childNodes.val().ride)
+
+
+
+          newA2.append(newI2)
+          newDiv6.append(newA2, newP2)
+          newDiv5.append(newDiv6)
+
+          var newDiv7 = $("<div>").addClass("row")
+          //need ride location \/
+          var newP3 = $("<p>").addClass("col s12 rideLocation").attr("id", "rideLocation").text(childNodes.val().location)
+          //need ride description text \/
+
+
+          var newP4 = $("<p>").addClass("col s12  rideDescription").text()
+
+
+          newDiv7.append(newP3, newP4)
+
+
+          newDiv5.append(newDiv6, newDiv7)
+
+          newDiv3.append(newDiv4, newDiv5)
+          if (childNodes.val().fastpass === true) {
+
+            newDiv3.addClass("needBorder")
+          }
+
+          newDiv2.append(newDiv3)
+
+
+
+          newDiv1.append(newTimeP, newDiv2)
+
+          $("#putCardsHere").append(newDiv1)
+           
+       // }
+      //}
+        })
+      //  })
+
+        
 
 
 
 
-var splitRide= childNodes.val().ride.split(" ")
-var thisRide= splitRide.join('-')
 
-
- var rides= ["astro-orbiter","barnstormer", "big-thunder-mountain-railroad", "buzz-lightyears-space-ranger-spin", "country-bear-jamboree","dumbo-the-flying-elephant","hall-of-presidents", "haunted-mansion","its-a-small-world", "jungle-cruise","mad-tea-party","magic-carpets-of-aladdin", "many-adventures-of-winnie-the-pooh", "peter-pans-flight", "pirates-of-the-caribbean","prince-charming-regal-carrousel", "seven-dwarfs-mine-train","space-mountain", "splash-mountain","tomorrowland-speedway","tomorrowland-transit-authority-peoplemover", "under-the-sea","walt-disneys-carousel-of-progress", "enchanted-tiki-room"]
-
-var position = rides.indexOf(thisRide)
-var whatItIs;
- 
-
-   ride = rides[position]
-   var proxyurl = "https://api.codetabs.com/v1/proxy?quest="
-   var url = "https://touringplans.com/magic-kingdom/attractions/"+ ride + ".json"
-   var newURL = proxyurl + url 
+    })
    
- $.ajax({
-   url: newURL,
-   method: "GET"
- })
- .then(function(response){
-   console.log(response.name + ": " + response["what_it_is"])
-   var whatItIs= response["what_it_is"]
-
-
-   var newDiv1= $("<div>").addClass("row center-align")
-   //need time of attraction added\/
-   var newTimeP= $("<p>").addClass("col s2 offset-m1 offset-l2 time").text(childNodes.val().timeOfRide)
-    var newDiv2 = $("<div>").addClass("col s9 m7 l4 center-align")
-    var newDiv3 = $("<div>").addClass("card center-align")
-    var newDiv4 = $("<div>").addClass("card-image")
-     //need img file path\/
-     
-    var newImg = $("<img>").attr("src", childNodes.val().image)
-    //need how many minutes for attraction \/
-    var newSpan = $("<span>").addClass("card-title").attr("id", "minutes").text(childNodes.val().totalRideTime)
-    var newA = $("<a>").addClass("btn-floating halfway-fab waves-effect waves-light blue")
-    var newI = $("<i>").addClass("material-icons right").text("cloud")
-   
-    newA.append(newI)
-    newDiv4.append(newImg, newSpan, newA)
-   
-    var newDiv5= $("<div>").addClass("card-content")
-    var newDiv6= $("<div>").addClass("row valign-wrapper")
-    var newA2 = $("<a>").addClass("waves-effect waves-light btn-large col amber accent-4 s3")
-    var newI2 = $("<i>").addClass("material-icons").text("check").attr("data-check", i).addClass("checkOff")
-    //need ride name \/
-    var newP2 = $("<p>").addClass("col s9 rideTitle").text(childNodes.val().ride)
-   
-   
-   
-    newA2.append(newI2)
-    newDiv6.append(newA2, newP2)
-    newDiv5.append(newDiv6)
-   
-    var newDiv7= $("<div>").addClass("row")
-    //need ride location \/
-    var newP3 = $("<p>").addClass("col s12 rideLocation").attr("id", "rideLocation").text(childNodes.val().location)
-    //need ride description text \/
-
-
-   var newP4= $("<p>").addClass("col s12  rideDescription").text(whatItIs)
-
-
-   newDiv7.append(newP3, newP4)
-  
-  
-   newDiv5.append(newDiv6, newDiv7)
-  
-   newDiv3.append(newDiv4, newDiv5)
-   if(childNodes.val().fastpass === true){
-
-    newDiv3.addClass("needBorder")
-   }
-  
-   newDiv2.append(newDiv3)
-
-   
-  
-   newDiv1.append(newTimeP, newDiv2)
-  
-   $("#putCardsHere").append(newDiv1)
-
- })
- 
-
-
-
 
 })
-})
+  })
+ 
 });
 
-$("body").on("click", ".checkOff", function(){
-    var key= $(this).data("check")
-    database.reference().child(key).remove();
-    database.reference("schedule/"+ uid).child(key).remove();
-    //updating display, removing parent of parent of the button (which is the entire row)
-    $(this).parent().parent().parent().parent().parent().parent().parent().remove()
-    //reload page
-    location.href = location.href
+
+
+
+
+$("body").on("click", ".checkOff", function () {
+  var key = $(this).data("check")
+  database.reference().child(key).remove();
+  database.reference("schedule/" + uid).child(key).remove();
+  //updating display, removing parent of parent of the button (which is the entire row)
+  $(this).parent().parent().parent().parent().parent().parent().parent().remove()
+  //reload page
+  location.href = location.href
 
 })
 
 
 
  //  var queryURL = "https://touringplans.com/magic-kingdom/attractions/"+ ride + ".json"
-   
-   
+
+
  //$.ajax({
   // url: newURL,
   // method: "GET"
@@ -962,3 +1039,6 @@ $("body").on("click", ".checkOff", function(){
                 </div>
             </div>
             */
+          
+
+           
