@@ -1,6 +1,8 @@
 # TourApp
 Creates an optimized daily schedule for a Magic Kingdom park aimed at novice users while also allowing experieced users to customize their schedule. 
 
+Link to project:
+https://jbambei.github.io/TourApp/start.html
 
 #Presentation
 
